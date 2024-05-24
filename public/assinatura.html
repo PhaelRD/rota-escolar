@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+  <title>Página Assinatura</title>
+
+  <link id="stylesheet" rel="stylesheet" href="css/assinatura2.css">
+
+  <!-- Adicione as bibliotecas do Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+
+  <!-- Configurações do Firebase -->
+  <script src="js/firebase.js"></script>
+
+  
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+          <h1 class="titulo"></h1>
+          <button id="toggleButton">Mudar Tema</button>
+    
+          <div class="perfil">
+            <img id="fotoUsuario" alt="Foto do Usuário" class="perfil-imagem">
+            <div class="dados">
+              <p class="nome info"><strong>Nome:</strong> <span id="nomeUsuario">Nome do Usuário</span></p>
+              <p class="email info"><strong>Email:</strong> <span id="emailUsuario">email@exemplo.com</span></p>
+              
+              <!-- Modal -->
+              <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <label for="numeroPix">Cadastre o PIX para fazer cobranças por WhatsApp:</label>
+                  <input type="text" id="numeroPix" placeholder="Digite seu número do PIX">
+                  <button onclick="salvarNumeroPIX()" class="button button-pix">Salvar</button>
+                </div>
+              </div>
+              
+              <p class="info"><strong>Chave PIX:</strong> <span id="numeroPixExibicao">Sem Cadastro</span></p>
+    
+              <button id="abrirModal" class="button button-pix">Cadastre o PIX</button>
+    
+              <p class="info"><strong>Assinatura:</strong> <span id="assinaturaUsuario">Assinatura</span></p>
+              <!-- Botão de atualização de plano -->
+              <div id="localBotaoUpgrade" class="info"></div>
+            </div>
+          </div>
+    
+          <div class="botoes">
+            <button onclick="window.open('https://wa.me/5511984536653', '_blank')" class="button button-contato">Entre em contato</button>
+            <button onclick="logout()" class="button button-logout">Sair</button>
+          </div>
+        </div>
+        
+        <div class="content">
+            <a href="usuario.html"><button>Voltar</button></a>
+        
+            <!--tabela de preços stripe-->
+            <div id="stripePricingTable" style="display: none;">
+              <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+              <stripe-pricing-table pricing-table-id="prctbl_1OkbmiJI6wzmi77Ibo4lZGMH"
+                  publishable-key="pk_live_51OkZrqJI6wzmi77IyfRkyuIKsqi0NFNmySYWrmleMGBVQTFX0c8YIKDZhNJvpeeCdeQwv8yWXBWuA8a7vC2lEfq6003j3NM9ON"
+                  customer-email="">
+              </stripe-pricing-table>
+            </div>
+
+            <script>
+              firebase.auth().onAuthStateChanged(function(user) {
+                  if (user) {
+                      const stripePricingTable = document.querySelector('#stripePricingTable stripe-pricing-table');
+                      stripePricingTable.setAttribute('customer-email', user.email);
+                  }
+              });
+            </script>
+        
+            <script>
+                // Verificar o número de registros do usuário
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                        firebase.database().ref('users/' + user.uid).once('value')
+                        .then((snapshot) => {
+                            if (snapshot.exists()) {
+                                const userData = snapshot.val();
+                                // Verificar se o número de registros é igual a 5
+                                if (userData.registros === 5) {
+                                    // Mostrar a tabela de preços do Stripe
+                                    document.getElementById('stripePricingTable').style.display = 'block';
+                                }
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Erro ao verificar número de registros do usuário:", error);
+                        });
+                    }
+                });
+            </script>
+        
+            <h1>Apos a Compra, Atualização ou Cancelamento da assinatura, sua conta sera atualizada em até 12 horas</h1>
+        
+            <script>
+                // Adicione este JavaScript para controlar a expansão e retração do sidebar
+                document.addEventListener('DOMContentLoaded', function() {
+                  const sidebar = document.getElementById('sidebar');
+                  const perfilImagem = document.getElementById('fotoUsuario');
+            
+                  // Adiciona um evento de clique à imagem do perfil
+                  perfilImagem.addEventListener('click', function() {
+                    // Alternar a classe 'expandido' no sidebar
+                    sidebar.classList.toggle('expandido');
+                  });
+                });
+              </script>
+            
+              <script>
+                // Captura o botão de alternância
+                const toggleButton = document.getElementById('toggleButton');
+            
+                // Define uma variável para controlar o estado do estilo
+                let isUsuario1 = localStorage.getItem('isUsuario1') === 'true'; // Verifica se o estado anterior foi definido como "true"
+            
+                // Função para alternar o estilo do tema
+                function toggleTheme() {
+                    if (isUsuario1) {
+                        // Alterna para o arquivo de estilo usuario2.css
+                        document.getElementById('stylesheet').href = 'css/assinatura2.css';
+                    } else {
+                        // Alterna para o arquivo de estilo usuario.css
+                        document.getElementById('stylesheet').href = 'css/assinatura.css';
+                    }
+                }
+            
+                // Adiciona um evento de clique ao botão de alternância
+                toggleButton.addEventListener('click', () => {
+                    // Inverte o estado do tema
+                    isUsuario1 = !isUsuario1;
+                    // Armazena o estado atual no armazenamento local do navegador
+                    localStorage.setItem('isUsuario1', isUsuario1);
+                    // Chama a função para alternar o tema
+                    toggleTheme();
+                });
+            
+                // Chama a função para alternar o tema ao carregar a página   
+                toggleTheme();
+            
+              </script>
+        </div>
+    </div>
+
+    <script src="js/usuario.js"></script>
+    <script src="js/cadastropix.js"></script>
+
+</body>
+</html>

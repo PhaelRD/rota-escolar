@@ -1,0 +1,226 @@
+/* Reset de estilos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  flex: 1; /* Faz o logo ocupar todo o espaço disponível */
+}
+
+.logo img {
+  width: 200px;
+}
+
+.pricing-section img {
+  width: 50px;
+}
+
+.feature img {
+  width: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header button {
+  background-color: #FFD700; /* Cor de fundo dos botões (amarelo) */
+  color: #000000; /* Cor do texto dos botões */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Borda arredondada */
+  text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Adiciona transição suave */
+}
+
+/* Adiciona efeito de hover nos botões */
+header button:hover {
+  background-color: #FFDF7A; /* Altera a cor de fundo ao passar o mouse */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra ao passar o mouse */
+}
+
+section {
+  padding: 50px;
+}
+
+#destaque {
+  background-color: #f4f4f4;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video,
+.pricing-section {
+  flex: 1;
+}
+
+.feature {
+  margin-bottom: 30px;
+}
+
+.feature img {
+  width: 50px;
+}
+
+.feature-title {
+  cursor: pointer;
+  color: #000000;
+}
+
+.feature-info {
+  display: none;
+  margin-top: 10px;
+}
+
+.feature-info.active {
+  display: block;
+}
+
+#contato {
+  background-color: #000000;
+  color: #fff;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.button-contato,
+.cta-button {
+  background-color: #FFD700; /* Cor de fundo dos botões (amarelo) */
+  color: #000000; /* Cor do texto dos botões */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Borda arredondada */
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Adiciona transição suave */
+}
+
+/* Adiciona efeito de hover nos botões */
+.button-contato:hover,
+.cta-button:hover {
+  background-color: #FFDF7A; /* Altera a cor de fundo ao passar o mouse */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra ao passar o mouse */
+}
+
+footer {
+  background-color: #000000;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.pricing-section {
+  text-align: center; /* Centraliza o conteúdo horizontalmente */
+  margin: 0 auto; /* Centraliza a seção pricing-section na página */
+  background-color: #fffccf; /* Cor de fundo para a seção pricing-section */
+  color: #000000; /* Cor do texto para a seção pricing-section */
+  padding: 20px; /* Adiciona espaço interno */
+  border-radius: 10px; /* Borda arredondada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
+}
+
+
+
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for mobile devices */
+  header {
+      padding: 10px;
+      flex-direction: column-reverse; /* Inverte a ordem dos elementos quando em versão mobile */
+      align-items: center; /* Centraliza os itens verticalmente */
+  }
+  
+  .logo {
+      order: 2; /* Move o logo para baixo na ordem */
+      margin-bottom: 20px; /* Adiciona espaço entre o logo e os botões */
+  }
+  
+  .logo img {
+      width: 150px;
+  }
+  
+  nav ul {
+      flex-direction: row; /* Altera a direção para lado a lado */
+      justify-content: center; /* Centraliza os itens horizontalmente */
+      align-items: center;
+      margin-bottom: 20px; /* Adiciona espaço entre os botões e o logo */
+  }
+  
+  nav ul li {
+      margin-right: 10px;
+      margin-bottom: 0; /* Remove o espaço inferior */
+  }
+  
+  header button {
+      margin-top: 10px;
+  }
+  
+  section {
+      padding: 30px;
+  }
+  
+  #destaque {
+      padding: 30px;
+  }
+  
+  .flex {
+      flex-direction: column;
+  }
+  
+  .video,
+  .pricing-section {
+      flex: none;
+      width: 100%;
+  }
+  
+  .feature img {
+      width: 40px;
+  }
+  
+  .feature-info {
+      margin-top: 5px;
+  }
+  
+  footer {
+      padding: 10px;
+  }
+
+  /* Adjust video size for mobile devices */
+  .video iframe {
+      width: 100%;
+      height: auto;
+  }
+}

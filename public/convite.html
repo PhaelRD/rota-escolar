@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+    <title>Gerenciar Alunos</title>
+    <link id="stylesheet" rel="stylesheet" href="css/alunos.css">
+
+    
+    <!-- alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>    
+
+    <!-- banco de dados firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+
+    <script src="js/firebase.js"></script>
+    <script src="js/convite.js"></script>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Cadastro de Aluno</h1>
+    </header>
+
+    <section id="formSection">
+        <!-- Formulário para adicionar/editar aluno -->
+        <h2>Adicionar</h2>
+        <form id="formAluno">
+            <input type="hidden" id="alunoId">
+            
+            <label for="escolaSelect">Escola:</label>
+            <select id="escolaSelect" required></select>
+    
+            <label for="nomeAluno">Nome do Aluno:</label>
+            <input type="text" id="nomeAluno" required>
+    
+            <label for="idadeAluno">Idade do Aluno:</label>
+            <input type="number" id="idadeAluno" required>
+    
+            <label for="dataVencimento">Data de <strong>Vencimento da Mensalidade:</strong></label>
+            <input type="date" id="dataVencimento" required>
+    
+            <!-- Adicionando o campo de período -->
+            <label for="periodoAluno">Período:</label>
+            <select id="periodoAluno" required>
+                <option value="manha">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="integral">Integral</option>
+            </select>
+    
+            <!-- Campos para responsável -->
+            <h3>Responsável</h3>
+            <label for="nomeResponsavel">Nome do Responsável:</label>
+            <input type="text" id="nomeResponsavel" required>
+    
+            <label for="telefoneUm">Telefone 1:</label>
+            <input type="tel" id="telefoneUm" placeholder="Exemplo: 119XXXXXXXX" required>
+    
+            <label for="telefoneDois">Telefone 2:</label>
+            <input type="tel" id="telefoneDois">
+    
+            <label for="emailResponsavel">Email:</label>
+            <input type="email" id="emailResponsavel">
+    
+            <!-- Campos para endereço -->
+            <h3>Endereço</h3>
+            <label for="ruaAluno">Rua do Aluno:</label>
+            <input type="text" id="ruaAluno">
+    
+            <label for="numeroRuaAluno">Número da Rua:</label>
+            <input type="number" id="numeroRuaAluno">
+    
+            <section id="valorSection">
+                <h2>Valor da Mensalidade</h2>
+                <p id="valorMensalidade"></p>
+            </section>
+            <button type="button" onclick="salvarAluno()">Salvar Aluno</button>
+        </form>
+    </section>
+
+</body>
+
+</html>

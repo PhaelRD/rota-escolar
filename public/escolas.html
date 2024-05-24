@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+  <title>Gerenciar Escolas</title>
+
+  <!-- Adicionando o CSS -->
+  <link id="stylesheet" rel="stylesheet" href="css/escolas2.css">
+
+  <!-- alertas -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>    
+
+  <!-- banco de dados firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <h1 class="titulo"></h1>
+      <button id="toggleButton">Mudar Tema</button>
+
+      <div class="perfil">
+        <img id="fotoUsuario" alt="Foto do Usuário" class="perfil-imagem">
+        <div class="dados">
+          <p class="nome info"><strong>Nome:</strong> <span id="nomeUsuario">Nome do Usuário</span></p>
+          <p class="email info"><strong>Email:</strong> <span id="emailUsuario">email@exemplo.com</span></p>
+
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <label for="numeroPix">Cadastre o PIX para fazer cobranças por WhatsApp:</label>
+              <input type="text" id="numeroPix" placeholder="Digite seu número do PIX">
+              <button onclick="salvarNumeroPIX()" class="button button-pix">Salvar</button>
+            </div>
+          </div>
+
+          <p class="info"><strong>Chave PIX:</strong> <span id="numeroPixExibicao">Sem Cadastro</span></p>
+          <button id="abrirModal" class="button button-pix">Cadastre o PIX</button>
+          <p class="info"><strong>Assinatura:</strong> <span id="assinaturaUsuario">Assinatura</span></p>
+          <div id="localBotaoUpgrade" class="info"></div>
+        </div>
+      </div>
+
+      <div class="botoes">
+        <button onclick="window.open('https://wa.me/5511984536653', '_blank')" class="button button-contato">Entre em contato</button>
+        <button onclick="logout()" class="button button-logout">Sair</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <header>
+        <h1>Gerenciar Escolas</h1>
+        <button class="button-voltar" onclick="navegarPara('usuario.html')">Voltar</button>
+      </header>
+
+      <div id="sectionsContainer">
+        <section id="formSection">
+          <h2>Adicionar/Editar Escola</h2>
+          <form id="formEscola">
+            <input type="hidden" id="escolaId">
+            <label for="nomeEscola">Nome da Escola:</label>
+            <input type="text" id="nomeEscola" required>
+
+            <label for="ruaEscola">Rua da Escola:</label>
+            <input type="text" id="ruaEscola" required>
+
+            <label for="numeroRua">Número da Rua:</label>
+            <input type="number" id="numeroRua" required>
+
+            <label for="contatoEscola">Contato da Escola:</label>
+            <input type="text" id="contatoEscola" required>
+
+            <button type="button" onclick="salvarEscola()">Salvar</button>
+          </form>
+        </section>
+
+        <section id="listaSection">
+          <h2>Lista de Escolas</h2>
+          <ul id="listaEscolas"></ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function navegarPara(pagina) {
+      window.location.href = pagina;
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const perfilImagem = document.getElementById('fotoUsuario');
+      perfilImagem.addEventListener('click', function() {
+        sidebar.classList.toggle('expandido');
+      });
+    });
+  </script>
+
+  <script>
+    const toggleButton = document.getElementById('toggleButton');
+    let isUsuario1 = localStorage.getItem('isUsuario1') === 'true';
+
+    function toggleTheme() {
+      if (isUsuario1) {
+        document.getElementById('stylesheet').href = 'css/escolas2.css';
+      } else {
+        document.getElementById('stylesheet').href = 'css/escolas.css';
+      }
+    }
+
+    toggleButton.addEventListener('click', () => {
+      isUsuario1 = !isUsuario1;
+      localStorage.setItem('isUsuario1', isUsuario1);
+      toggleTheme();
+    });
+
+    toggleTheme();
+  </script>
+
+  <script src="js/firebase.js"></script>
+  <script src="js/crudescolas.js"></script>
+  <script src="js/usuario.js"></script>
+  <script src="js/cadastropix.js"></script>
+</body>
+</html>

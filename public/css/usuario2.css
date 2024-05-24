@@ -1,0 +1,397 @@
+/* Estilos para o corpo da página */
+body {
+    margin-left: 100px; /* Margem à esquerda */
+    margin-right: 20px; /* Margem à direita */
+    background-color: #15202b; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto */
+  }
+  
+  /* Estilos para a barra lateral */
+  .container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px; /* Largura da barra lateral */
+    background-color: #192734; /* Cor de fundo da barra lateral */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1da1f2; /* Cor do Twitter */
+    margin-bottom: 20px;
+  }
+  
+  .perfil {
+    margin-bottom: 30px;
+  }
+  
+  .perfil-imagem {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .dados {
+    margin-top: 20px;
+  }
+  
+  .nome,
+  .email {
+    margin-bottom: 10px;
+  }
+
+  .nome{
+    margin-top: 70px;
+  }
+  
+  .info {
+    font-size: 16px;
+    color: #ffffff; /* Cor do texto */
+  }
+  
+  .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #1da1f2; /* Cor do Twitter */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .button:hover {
+    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
+  }
+  
+  /* Estilos para o conteúdo ao lado da barra lateral */
+  .content {
+    flex: 1; /* O conteúdo ocupa todo o espaço restante */
+  }
+  
+  .nav-button {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #1da1f2; /* Cor do Twitter */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .nav-button:hover {
+    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
+  }
+  
+  #info {
+    margin-bottom: 30px;
+  }
+  
+  #avisosPagamento {
+    margin-top: 30px;
+  }
+  
+  /* Estilos para o modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #192734; /* Cor de fundo do modal */
+    margin: auto; /* Centraliza horizontalmente */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px; /* Defina a largura máxima do modal */
+    position: relative; /* Para centralizar verticalmente */
+    top: 50%; /* Para centralizar verticalmente */
+    transform: translateY(-50%); /* Para centralizar verticalmente */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Estilo para o input dentro do modal */
+  .modal-content input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #30444e; /* Cor de fundo do input */
+    color: #ffffff; /* Cor do texto do input */
+  }
+  
+  /* Estilo para o botão dentro do modal */
+  .modal-content button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #1da1f2; /* Cor do Twitter */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .modal-content button:hover {
+    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
+  }
+  
+  
+  .button-logout {
+    background-color: #e0245e; /* Cor vermelha do Twitter */
+  }
+  
+  .button-logout:hover {
+    background-color: #c72052; /* Cor de destaque ao passar o mouse */
+  }
+  
+  /* Estilo para o botão de assinatura */
+  #localBotaoUpgrade {
+    margin-top: 20px;
+  }
+  
+  #localBotaoUpgrade button {
+    display: block;
+    padding: 10px;
+    background-color: #1da1f2; /* Cor do Twitter */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  #localBotaoUpgrade button:hover {
+    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
+  }
+  
+  /* Estilos para a seção de informações importantes */
+  #info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  #info > div {
+    flex: 0 0 250px; /* Define uma largura fixa para as colunas */
+    margin-bottom: 20px; /* Espaçamento entre as colunas */
+    padding: 10px; /* Espaçamento interno das colunas */
+    background-color: #30444e; /* Cor de fundo para destacar as colunas */
+    border-radius: 5px; /* Borda arredondada */
+  }
+  
+  .content h2 {
+    text-align: center; /* Centraliza o texto */
+  }
+  
+  /* Estilos para os botões de navegação */
+  #navbuttons {
+    display: flex;
+    justify-content: center; /* Centraliza os botões horizontalmente */
+  }
+  
+  .nav-button {
+    margin: 0 10px; /* Espaçamento entre os botões */
+  }
+  
+  /* Estilos para a seção de avisos de pagamento */
+  #avisosPagamento {
+    text-align: center; /* Centraliza o texto */
+  }
+  
+  /* Estilos para a lista de avisos de pagamento */
+  #listaAvisosPagamento {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #listaAvisosPagamento li {
+    margin-bottom: 20px; /* Adiciona espaço entre os itens */
+    padding-bottom: 20px; /* Adiciona espaço entre os itens */
+    border-bottom: 1px solid #ccc; /* Adiciona uma linha de separação */
+  }
+  
+  /* Estilos para os botões de pagamento e cobrança */
+  .pago-btn,
+  .cobrar-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Estilos específicos para o botão de pagamento */
+  .pago-btn {
+    background-color: #4CAF50; /* Cor de fundo para pagamento */
+    color: #ffffff; /* Cor do texto para pagamento */
+  }
+  
+  /* Estilos específicos para o botão de cobrança */
+  .cobrar-btn {
+    background-color: #e0245e; /* Cor de fundo para cobrança */
+    color: #ffffff; /* Cor do texto para cobrança */
+  }
+  
+  /* Adiciona margem à direita para o botão "Pago" */
+  .pago-btn {
+    margin-top:10px;
+    margin-right: 10px;
+  }
+  
+  /* Adiciona margem à esquerda para o botão "Cobrar por WhatsApp" */
+  .cobrar-btn {
+    margin-top:10px;
+    margin-left: 10px;
+  }
+  
+  .sidebar {
+    position: relative; /* Torna a barra lateral um contexto de posicionamento */
+  }
+  
+  #toggleButton {
+    position: absolute; /* Posição absoluta em relação à barra lateral */
+    top: 10px; /* Distância do topo */
+    right: 10px; /* Distância da direita */
+    display: block;
+    padding: 8px 12px; /* Reduzindo o padding para diminuir o tamanho */
+    background-color: #1da1f2; /* Cor do Twitter */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px; /* Reduzindo o tamanho da fonte */
+  }
+  
+  #toggleButton:hover {
+    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
+  }
+  
+  /* Adicione este CSS para ajustar o tamanho do sidebar */
+  .sidebar.expandido {
+    width: 250px;
+    z-index:2 ;
+  }
+  
+  .sidebar {
+    width: 50px; /* Largura retraída */
+    height: 50px; /* Altura retraída */
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: width 0.5s ease, height 0.5s ease; /* Adiciona uma transição suave */
+    position: relative; /* Define a posição como relativa */
+  }
+  
+  /* Adicione esta regra para tornar a imagem do perfil clicável */
+  .perfil-imagem {
+    cursor: pointer; /* Altera o cursor para indicar que a imagem é clicável */
+    width: 50px; /* Largura da imagem */
+    height: 50px; /* Altura da imagem */
+    border-radius: 50%; /* Bordas arredondadas para criar uma aparência circular */
+    position: absolute; /* Define a posição como absoluta */
+    top: 20px; /* Ajusta a posição verticalmente */
+    left: 20px; /* Ajusta a posição horizontalmente */
+  }
+  
+  /* Adicione esta regra para esconder o botão "Mudar Tema" quando retraído */
+  .sidebar.expandido #toggleButton {
+    display: block;
+  }
+  
+  .sidebar #toggleButton {
+    display: none;
+  }
+  
+  /* Adicione este CSS para esconder os elementos dentro do sidebar quando retraído */
+  .sidebar.expandido .dados,
+  .sidebar.expandido .botoes {
+    display: block;
+  }
+  
+  .sidebar .dados,
+  .sidebar .botoes {
+    display: none;
+  }
+  
+  /* Adiciona estilo ao sidebar */
+  .sidebar {
+    position: fixed; /* Mantém o sidebar fixo enquanto o usuário rola a página */
+    top: 0;
+    left: 0;
+    width: 50px; /* Largura inicial do sidebar retraído */
+    height: 100vh; /* Altura total da tela */
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: width 0.5s ease; /* Adiciona uma transição suave apenas para a largura */
+    z-index: 3; /* Certifica-se de que o sidebar esteja na frente de outros elementos */
+  }
+  
+  /* Estilo da imagem do perfil */
+  .perfil-imagem {
+    cursor: pointer; /* Altera o cursor para indicar que a imagem é clicável */
+    width: 50px; /* Largura da imagem */
+    height: 50px; /* Altura da imagem */
+    border-radius: 50%; /* Bordas arredondadas para criar uma aparência circular */
+    position: absolute; /* Define a posição como absoluta */
+    top: 20px; /* Ajusta a posição verticalmente */
+    left: 20px; /* Ajusta a posição horizontalmente */
+  }
+  
+  /* Adiciona estilo ao botão "Mudar Tema" */
+  #toggleButton {
+    display: none; /* Esconde o botão "Mudar Tema" */
+  }
+  
+  /* Estilo do sidebar expandido */
+  .sidebar.expandido {
+    width: 250px; /* Largura expandida do sidebar */
+  }
+  
+  /* Estilo dos elementos dentro do sidebar */
+  .sidebar.expandido .dados,
+  .sidebar.expandido .botoes {
+    display: block; /* Mostra os elementos quando o sidebar estiver expandido */
+  }
+  
+  .swal2-container {
+    z-index: 4; /* Define a camada das janelas modais do Swal.fire */
+  }
+  

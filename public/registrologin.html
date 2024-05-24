@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link id="stylesheet" rel="stylesheet" href="css/registro.css">
+  <title>Registro e Login</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Logo">
+            </a>
+        </div>    
+    </header>
+
+  <div class="container">
+    <!-- Formulário de registro -->
+    <form id="signup-form">
+      <h2>Registro</h2>
+      <input type="email" id="signup-email" placeholder="E-mail" required>
+      <input type="password" id="signup-password" placeholder="Senha" required>
+      <input type="text" id="signup-displayname" placeholder="Nome de usuário" required>
+      <button type="submit">Registrar</button>
+    </form>
+
+    <!-- Formulário de login -->
+    <form id="login-form">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="E-mail" required>
+      <input type="password" id="login-password" placeholder="Senha" required>
+      <button type="submit">Login</button>
+      <button onclick="googleLogin()">Login Com Google</button>
+    </form>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+
+
+  <!-- Configurações do Firebase -->
+  <script src="js/firebase.js"></script>
+  <script src="js/logingoogle.js"></script>
+  
+  
+  <script>
+    // Função para registro com e-mail, senha e nome de usuário
+    function emailSignUp(email, password, displayName) {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Registro com e-mail e senha bem-sucedido
+          const user = userCredential.user;
+          console.log("Usuário registrado com sucesso:", user);
+
+          // Adicionar usuário ao banco de dados
+          firebase.database().ref('users/' + user.uid).set({
+            email: user.email,
+            displayName: displayName,
+            photoURL: "https://i.pinimg.com/474x/b7/cf/46/b7cf46c96e503fdec995645e70d95705.jpg",
+            registros: 5 
+            // Outros dados do usuário que você deseja armazenar
+          })
+          .then(() => {
+            console.log("Novo usuário registrado no banco de dados");
+          })
+          .catch((error) => {
+            console.error("Erro ao registrar novo usuário no banco de dados:", error);
+          });
+
+          // Redirecionar para a página de usuário após o registro
+          window.location.href = "usuario.html";
+        })
+        .catch((error) => {
+          // Ocorreu um erro durante o registro com e-mail e senha
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error("Erro durante o registro com e-mail e senha:", errorMessage);
+        });
+    }
+
+    // Função para login com e-mail e senha
+    function emailLogin(email, password) {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Login com e-mail e senha bem-sucedido
+          const user = userCredential.user;
+          console.log("Usuário autenticado com sucesso:", user);
+
+          // Redirecionar para a página de usuário após o login
+          window.location.href = "usuario.html";
+        })
+        .catch((error) => {
+          // Ocorreu um erro durante o login com e-mail e senha
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error("Erro durante o login com e-mail e senha:", errorMessage);
+        });
+    }
+
+    // Event listener para o formulário de registro
+    document.getElementById("signup-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      const displayName = document.getElementById("signup-displayname").value;
+      emailSignUp(email, password, displayName);
+    });
+
+    // Event listener para o formulário de login
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+      emailLogin(email, password);
+    });
+  </script>
+</body>
+</html>

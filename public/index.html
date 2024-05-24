@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+  <title>Rota Escolar</title>
+
+  <link id="stylesheet" rel="stylesheet" href="css/index.css">
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+
+
+  <!-- Configurações do Firebase -->
+  <script src="js/firebase.js"></script>
+  <script src="js/logingoogle.js"></script>
+
+</head>
+
+<body>
+  <header>
+      <div class="logo">
+          <img src="img/logo.png" alt="Logo">
+      </div>
+      <nav>
+          <ul>
+              <li><a href="#recursos">Recursos</a></li>
+              <li><a href="#contato">Contato</a></li>
+              <button onclick="window.location.href = 'registrologin.html';">Experimente Grátis</button>
+          </ul>
+      </nav>
+  </header>
+
+  <section id="destaque">
+      <h1>Simplifique o Gerenciamento do Transporte Escolar</h1>
+      <p>Com nossa aplicação web, você pode gerenciar os alunos, escolas e cobranças em um só lugar. Desde a
+        inscrição dos alunos, oferecemos uma solução completa para facilitar o transporte escolar.</p>
+      <div class="flex">
+        <div class="video">
+            <!-- Coloque o código do vídeo aqui -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/H-8YeVJUW_U?si=z-cg42aC3fIdN-93" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="pricing-section">
+          <img src="img/iconpromocao.png" alt="Ícone de Benefícios">
+          <h2>Experimente Agora!</h2>
+          <p>Mensalidade a partir de:</p>
+          <h1>R$ 40,00</h1>
+          <p>por mês</p>
+          <button class="cta-button" onclick="window.location.href = 'registrologin.html';">Experimente Agora</button>
+          
+        </div>
+      </div>
+  </section>
+
+  <section id="recursos">
+    <div class="feature">
+      <img src="img/icongerenciamento.png" alt="Ícone de Recurso 1">
+      <h2 class="feature-title" onclick="toggleFeature(this)">Gerenciamento de Escolas e Alunos</h2>
+      <div class="feature-info">
+        <p>Crie e gerencie sua lista de escolas e alunos de forma fácil. Nossa plataforma oferece uma interface
+          intuitiva para que você possa adicionar, editar e excluir informações rapidamente.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <img src="img/whatsapp.png" alt="Ícone de Recurso 2">
+      <h2 class="feature-title" onclick="toggleFeature(this)">Avisos de Cobrança por WhatsApp</h2>
+      <div class="feature-info">
+        <p>Envie avisos de cobrança para os pais através do WhatsApp de forma rápida e eficiente. Com apenas
+          alguns cliques, você pode manter os responsáveis informados sobre os pagamentos pendentes e
+          facilitar a comunicação.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <img src="img/gastos.png" alt="Ícone de Recurso 3">
+      <h2 class="feature-title" onclick="toggleFeature(this)">Gerenciamento de Gastos</h2>
+      <div class="feature-info">
+        <p>Controle os gastos relacionados ao transporte escolar de maneira organizada e eficaz. Nossa
+          plataforma oferece ferramentas de acompanhamento financeiro para que você possa monitorar os
+          custos e otimizar os recursos.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <img src="img/convite.png" alt="Ícone de Recurso 4">
+      <h2 class="feature-title" onclick="toggleFeature(this)">Criar Convites para Cadastro de Alunos</h2>
+      <div class="feature-info">
+        <p>Crie e envie convites personalizados para os pais cadastrarem os alunos na plataforma. Com modelos
+          pré-definidos e opções de personalização, você pode facilitar o processo de inscrição e garantir
+          uma adesão rápida e eficiente.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <section id="contato">
+      <h2>Entre em Contato</h2>
+      <p>Estamos aqui para ajudar! Se tiver alguma dúvida ou precisar de suporte, não hesite em entrar em contato
+        conosco.</p>
+      <!-- Formulário de contato -->
+      <button onclick="window.open('https://wa.me/5511984536653', '_blank')" class="button button-contato">Entre em contato</button>
+  </section>
+
+  <footer>
+      <p>&copy; 2024 Gestão de Rota Escolar. Todos os direitos reservados.</p>
+  </footer>
+
+<script>
+    // Adiciona um evento de clique a todos os links âncora dentro do nav
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault(); // Previne o comportamento padrão do link
+
+            // Obtém o destino do link âncora
+            const targetId = this.getAttribute('href').substring(1);
+
+            // Encontra o elemento alvo pelo ID
+            const targetElement = document.getElementById(targetId);
+
+            // Scrola suavemente até o elemento alvo
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+<script>
+  function toggleFeature(title) {
+  // Find the corresponding feature info
+  var featureInfo = title.nextElementSibling;
+
+  // Toggle the 'active' class to show/hide feature info
+  featureInfo.classList.toggle('active');
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,395 @@
+body {
+  margin-left: 100px;
+  margin-right: 20px;
+}
+
+/* Estilos para a barra lateral */
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1da1f2;
+  margin-bottom: 20px;
+}
+
+.perfil {
+  margin-bottom: 30px;
+}
+
+.perfil-imagem {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.dados {
+  margin-top: 20px;
+}
+
+.nome,
+.email {
+  margin-bottom: 10px;
+}
+
+.nome {
+  margin-top: 70px;
+}
+
+.info {
+  font-size: 16px;
+  color: #657786;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #0d8bf2;
+}
+
+.excluir-btn {
+  background-color: #e0245e;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.excluir-btn:hover {
+  background-color: #c02053;
+}
+
+.content {
+  flex: 1;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.modal-content button {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-content button:hover {
+  background-color: #0d8bf2;
+}
+
+.button-logout {
+  background-color: #e0245e;
+}
+
+.button-logout:hover {
+  background-color: #c72052;
+}
+
+#localBotaoUpgrade {
+  margin-top: 20px;
+}
+
+#localBotaoUpgrade button {
+  display: block;
+  padding: 10px;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+#localBotaoUpgrade button:hover {
+  background-color: #0d8bf2;
+}
+
+.sidebar {
+  position: relative;
+}
+
+#toggleButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: block;
+  padding: 8px 12px;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+#toggleButton:hover {
+  background-color: #0d8bf2;
+}
+
+.sidebar.expandido {
+  width: 250px;
+  z-index: 2;
+}
+
+.sidebar {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: width 0.5s ease, height 0.5s ease;
+  position: relative;
+}
+
+.perfil-imagem {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.sidebar.expandido #toggleButton {
+  display: block;
+}
+
+.sidebar #toggleButton {
+  display: none;
+}
+
+.sidebar.expandido .dados,
+.sidebar.expandido .botoes {
+  display: block;
+}
+
+.sidebar .dados,
+.sidebar .botoes {
+  display: none;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100vh;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: width 0.5s ease;
+  z-index: 3;
+}
+
+.perfil-imagem {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#toggleButton {
+  display: none;
+}
+
+.sidebar.expandido {
+  width: 250px;
+}
+
+.sidebar.expandido .dados,
+.sidebar.expandido .botoes {
+  display: block;
+}
+
+.swal2-container {
+  z-index: 4;
+}
+
+header {
+  background-color: #f0f0f0;
+  color: #000000;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header button {
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+section {
+  background-color: #f2f2f2;
+  color: #000000;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+section h2 {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.button-voltar{
+  background-color: #c72052;
+}
+
+.button-voltar:hover{
+  background-color: #c72052;
+}
+
+button:hover {
+  background-color: #0d8bf2;
+}
+
+/* Adicionado para organizar as seções lado a lado */
+#sectionsContainer {
+  display: flex;
+  gap: 20px;
+}
+
+#formSection, #listaSection {
+  flex: 1;
+  min-width: 300px;
+}
+
+#formSection {
+  height: 100%; /* Defina a altura que você deseja para a seção */
+  overflow-y: auto; /* Adicione rolagem vertical se o conteúdo ultrapassar a altura */
+}
+
+
+/* Estilo do cartão */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+/* Estilo do cabeçalho do cartão */
+.card-header {
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+/* Estilo do corpo do cartão */
+.card-body {
+  padding: 10px 0;
+}
+
+
+/* Estilo da seta */
+.seta-icone {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
