@@ -383,3 +383,23 @@ button:hover {
 #gastos-mes-selecionado li {
     margin-bottom: 10px; /* Espaçamento inferior */
 }
+
+/* Container flexível para as seções principais */
+#principal, #secundario {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Estilo para as caixas individuais */
+.box {
+  width: 48%; /* Ajuste a largura conforme necessário */
+  margin-bottom: 20px; /* Espaço entre as caixas */
+}
+
+/* Certifique-se de que o conteúdo se adapte bem a telas menores */
+@media (max-width: 768px) {
+  .box {
+    width: 100%;
+  }
+}

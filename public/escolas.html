@@ -30,6 +30,20 @@
           <p class="nome info"><strong>Nome:</strong> <span id="nomeUsuario">Nome do Usuário</span></p>
           <p class="email info"><strong>Email:</strong> <span id="emailUsuario">email@exemplo.com</span></p>
 
+          <button id="editarPerfil" class="button button-editar">Editar Perfil</button>
+
+          <!-- Modal de Edição de Perfil -->
+          <div id="modalEditarPerfil" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <label for="novoNome">Novo Nome:</label>
+              <input type="text" id="novoNome" placeholder="Digite o novo nome">
+              <label for="novoLinkImagem">Novo Link da Imagem:</label>
+              <input type="text" id="novoLinkImagem" placeholder="Digite o novo link da imagem">
+              <button onclick="salvarPerfil()" class="button button-salvar">Salvar</button>
+            </div>
+          </div>
+
           <div id="myModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>

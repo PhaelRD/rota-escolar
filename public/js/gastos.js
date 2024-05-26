@@ -98,6 +98,7 @@ function calcularResumo() {
                 // Cria um botão de exclusão
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Excluir';
+                deleteButton.style.marginLeft = '10px'; // Adiciona margem ao botão
                 deleteButton.onclick = function() {
                     excluirGasto(userId, mesAnoSelecionado, gastoKey);
                 };

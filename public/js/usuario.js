@@ -96,3 +96,68 @@ window.onload = function() {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+
+// Função para salvar as alterações do perfil
+function salvarPerfil() {
+  const novoNome = document.getElementById('novoNome').value;
+  const novoLinkImagem = document.getElementById('novoLinkImagem').value;
+
+  // Verificar se há um usuário autenticado
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // Recuperar os dados do usuário do banco de dados
+      firebase.database().ref('users/' + user.uid).once('value')
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            
+            // Atualizar apenas se um novo nome ou novo link foram fornecidos
+            const newData = {};
+            if (novoNome.trim() !== '') {
+              newData.displayName = novoNome;
+            } else {
+              newData.displayName = userData.displayName; // Manter o nome existente
+            }
+            if (novoLinkImagem.trim() !== '') {
+              newData.photoURL = novoLinkImagem;
+            } else {
+              newData.photoURL = userData.photoURL; // Manter o link de imagem existente
+            }
+
+            // Atualizar os dados do usuário no banco de dados
+            firebase.database().ref('users/' + user.uid).update(newData)
+              .then(() => {
+                // Atualizar os dados exibidos na página
+                document.getElementById('nomeUsuario').textContent = newData.displayName;
+                document.getElementById('fotoUsuario').src = newData.photoURL;
+
+                // Fechar o modal após salvar
+                document.getElementById('modalEditarPerfil').style.display = 'none';
+              }).catch((error) => {
+                console.error("Erro ao atualizar perfil:", error);
+                // Tratar erros de atualização do perfil, se necessário
+              });
+          } else {
+            console.error("Dados do usuário não encontrados");
+          }
+        }).catch((error) => {
+          console.error("Erro ao recuperar dados do usuário:", error);
+        });
+    }
+  });
+}
+
+// Captura o botão de edição de perfil
+const editarPerfilButton = document.getElementById('editarPerfil');
+
+// Adiciona um evento de clique ao botão de edição de perfil
+editarPerfilButton.addEventListener('click', () => {
+  // Exibe o modal de edição de perfil
+  document.getElementById('modalEditarPerfil').style.display = 'block';
+});
+
+// Chamar a função para verificar o usuário quando a página carregar
+window.onload = function() {
+  verificarUsuario();
+};
+

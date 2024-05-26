@@ -30,6 +30,20 @@
         <div class="dados">
           <p class="nome info"><strong>Nome:</strong> <span id="nomeUsuario">Nome do Usuário</span></p>
           <p class="email info"><strong>Email:</strong> <span id="emailUsuario">email@exemplo.com</span></p>
+
+          <button id="editarPerfil" class="button button-editar">Editar Perfil</button>
+
+          <!-- Modal de Edição de Perfil -->
+          <div id="modalEditarPerfil" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <label for="novoNome">Novo Nome:</label>
+              <input type="text" id="novoNome" placeholder="Digite o novo nome">
+              <label for="novoLinkImagem">Novo Link da Imagem:</label>
+              <input type="text" id="novoLinkImagem" placeholder="Digite o novo link da imagem">
+              <button onclick="salvarPerfil()" class="button button-salvar">Salvar</button>
+            </div>
+          </div>
           
           <!-- Modal -->
           <div id="myModal" class="modal">
@@ -63,7 +77,8 @@
           <button onclick="navegarPara('usuario.html')">Voltar</button>
       </header>
 
-      <section id="adicionar-gasto">
+      <section id="principal">
+        <div id="adicionar-gasto" class="box">
           <h2>Adicionar Gasto</h2>
           <label for="mesAno">Selecione o mês e o ano:</label>
           <input type="month" id="mesAno" name="mesAno">
@@ -75,29 +90,30 @@
           <input type="number" id="valor" name="valor">
           <br>
           <button onclick="adicionarGasto()">Adicionar Gasto</button>
-      </section>
-
-      <section id="calcular-resumo">
-          <h2>Calcular Resumo</h2>
+        </div>
+      
+        <div id="calcular-resumo" class="box">
+          <h2>Calcular Dos Gastos Mensais</h2>
           <label for="selecionarMesAno">Selecione o mês e o ano:</label>
           <input type="month" id="selecionarMesAno" name="selecionarMesAno">
           <button onclick="calcularResumo()">Calcular Resumo</button>
+        </div>
       </section>
       
-      <section>
-          <div>
-              <h2>Resumo</h2>
-              <p>Valor Total das Mensalidades: <span id="valorTotalMensalidades">0.00</span></p>
-              <p>Valor Total dos Gastos: <span id="valorTotalGastos">0.00</span></p>
-              <p>Diferença: <span id="diferenca">0.00</span></p>
-          </div>    
-      </section>
-
-      <section id="gastos-mes-selecionado">
+      <section id="secundario">
+        <div class="box">
+          <h2>Resumo</h2>
+          <p>Valor Total das Mensalidades: <span id="valorTotalMensalidades">0.00</span></p>
+          <p>Valor Total dos Gastos: <span id="valorTotalGastos">0.00</span></p>
+          <p>Diferença: <span id="diferenca">0.00</span></p>
+        </div>
+      
+        <div id="gastos-mes-selecionado" class="box">
           <h2>Gastos do Mês Selecionado</h2>
           <ul id="listaGastos">
-              <!-- Aqui serão inseridos os gastos do mês selecionado -->
+            <!-- Aqui serão inseridos os gastos do mês selecionado -->
           </ul>
+        </div>
       </section>
     </div>
   </div>
