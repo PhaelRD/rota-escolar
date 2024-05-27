@@ -38,7 +38,7 @@ function gerarConvite() {
     var valorMensalidadeCriptografado = btoa(valorMensalidade); // Criptografar o valor da mensalidade
 
     // Construir o link do convite
-    var linkConvite = "https://movelcompleto.web.app/convite.html?uid=" + uidCriptografado + "&valor=" + valorMensalidadeCriptografado;
+    var linkConvite = "https://rotaescolar.web.app/convite.html?uid=" + uidCriptografado + "&valor=" + valorMensalidadeCriptografado;
 
     // Crie a mensagem do pop-up
     var mensagem = "Link do convite: <a href='" + linkConvite + "' target='_blank'>" + linkConvite + "</a>";
