@@ -215,7 +215,13 @@ body {
     padding: 10px; /* Espaçamento interno das colunas */
     background-color: #30444e; /* Cor de fundo para destacar as colunas */
     border-radius: 5px; /* Borda arredondada */
+    transition: all 0.3s ease; /* Transição suave para todas as mudanças */
   }
+  
+  #info > div:hover {
+    transform: scale(1.05); /* Efeito de zoom in ao passar o mouse */
+  }
+  
   
   .content h2 {
     text-align: center; /* Centraliza o texto */
@@ -396,6 +402,7 @@ body {
   }
 
 /* Adicionar ao seu arquivo CSS */
+/* Adicionar ao seu arquivo CSS */
 .card {
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -434,5 +441,9 @@ body {
 /* Animação para quando os cards são visíveis */
 .card.visible {
   opacity: 1; /* Torna o card visível */
-  transform: translateY(0); /* Move o card para sua posição original */
+  transform: translateY(0) scale(1); /* Move o card para sua posição original e aplica um zoom de 105% */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Efeito de zoom in ao passar o mouse */
 }
