@@ -57,28 +57,40 @@ function verificarAvisosPagamentoUsuarioLogado() {
 
 // Função auxiliar para criar um item de aviso de pagamento
 function criarItemAviso(aluno, mes, ano, atrasado) {
-    const listItem = document.createElement('li');
+    const listItem = document.createElement('div');
+    listItem.classList.add('card');
+
     const diaVencimento = new Date(aluno.dataVencimento).getUTCDate();
     const statusPagamento = atrasado ? 'atrasado' : 'pendente';
     const corStatus = atrasado ? 'red' : 'yellow';
-    listItem.innerHTML = `<strong>Aviso:</strong> O pagamento para <strong>${aluno.nomeCompleto}</strong> no mês <strong>${mes}/${ano}</strong>, que vence dia <strong>${diaVencimento}</strong>, está <span style="color:${corStatus};"><strong>${statusPagamento}</strong></span>! Valor: <strong>R$ ${aluno.valor.toFixed(2)}</strong>`;
 
-    const pagoButton = document.createElement('button');
-    pagoButton.textContent = 'Pago';
-    pagoButton.classList.add('pago-btn');
+    listItem.innerHTML = `
+        <div class="card-header">Aviso de Pagamento</div>
+        <div class="card-body">
+            <p>O pagamento para <strong>${aluno.nomeCompleto}</strong> no mês <strong>${mes}/${ano}</strong>, que vence dia <strong>${diaVencimento}</strong>, está <span style="color:${corStatus};"><strong>${statusPagamento}</strong></span>!</p>
+            <p>Valor: <strong>R$ ${aluno.valor.toFixed(2)}</strong></p>
+        </div>
+        <div class="card-footer">
+            <button class="pago-btn">Pago</button>
+            <button class="cobrar-btn">Cobrar por WhatsApp</button>
+        </div>
+    `;
+
+    const pagoButton = listItem.querySelector('.pago-btn');
     pagoButton.onclick = () => registrarPagamentoUsuarioLogado(aluno.id, mes, ano);
 
-    const cobrarButton = document.createElement('button');
-    cobrarButton.textContent = 'Cobrar por WhatsApp';
-    cobrarButton.classList.add('cobrar-btn');
-    cobrarButton.onclick = () => enviarCobrancaWhatsAppUsuarioLogado(aluno.id, aluno.valor); // Passa o valor da mensalidade como parâmetro
+    const cobrarButton = listItem.querySelector('.cobrar-btn');
+    cobrarButton.onclick = () => enviarCobrancaWhatsAppUsuarioLogado(aluno.id, aluno.valor);
 
-    listItem.appendChild(document.createElement('br')); // Adiciona uma quebra de linha
-    listItem.appendChild(pagoButton);
-    listItem.appendChild(cobrarButton);
+    // Adicionar o card à lista e ativar a animação
+    document.getElementById('listaAvisosPagamento').appendChild(listItem);
+    setTimeout(() => listItem.classList.add('visible'), 10); // Timeout para permitir a renderização
 
     return listItem;
 }
+
+
+
 
 // Função para obter o mês de início da cobrança com base na data de vencimento
 function obterMesInicioCobranca(dataVencimento) {

@@ -389,3 +389,45 @@ body {
 .swal2-container {
   z-index: 4; /* Define a camada das janelas modais do Swal.fire */
 }
+
+/* Adicionar ao seu arquivo CSS */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px 5px;
+  width: calc(30% - 10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  vertical-align: top;
+  opacity: 0; /* Inicialmente invisível */
+  transform: translateY(20px); /* Inicialmente deslocado para baixo */
+  transition: all 0.3s ease; /* Transição suave para todas as mudanças */
+}
+
+.card-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card-body {
+  margin-bottom: 8px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#listaAvisosPagamento {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Animação para quando os cards são visíveis */
+.card.visible {
+  opacity: 1; /* Torna o card visível */
+  transform: translateY(0); /* Move o card para sua posição original */
+}
