@@ -208,7 +208,7 @@ body {
   flex: 0 0 250px; /* Define uma largura fixa para as colunas */
   margin-bottom: 20px; /* Espaçamento entre as colunas */
   padding: 10px; /* Espaçamento interno das colunas */
-  background-color: #30444e; /* Cor de fundo para destacar as colunas */
+  background-color: #ececec; /* Cor de fundo para destacar as colunas */
   border-radius: 5px; /* Borda arredondada */
   transition: all 0.3s ease; /* Transição suave para todas as mudanças */
 }
