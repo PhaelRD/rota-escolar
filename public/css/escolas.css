@@ -366,6 +366,10 @@ button:hover {
   overflow-y: auto; /* Adicione rolagem vertical se o conteúdo ultrapassar a altura */
 }
 
+#listaEscolas {
+  padding: 0px;
+}
+
 /* Estilo do cartão */
 .card {
   border: 1px solid #ccc;
