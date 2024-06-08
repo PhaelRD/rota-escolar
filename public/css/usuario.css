@@ -441,3 +441,22 @@ body {
 .card:hover {
   transform: scale(1.05); /* Efeito de zoom in ao passar o mouse */
 }
+
+/* Responsividade para telas menores */
+@media (max-width: 1200px) {
+  .card {
+    width: calc(45% - 10px); /* Dois cards por linha em telas médias */
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: calc(100% - 20px); /* Um card por linha em telas pequenas */
+  }
+
+  #listaAvisosPagamento {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
