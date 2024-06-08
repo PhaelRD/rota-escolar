@@ -1,16 +1,15 @@
 body {
-  margin-left: 100px; /* Margem à esquerda */
-  margin-right: 20px; /* Margem à direita */
+  margin-left: 100px;
+  margin-right: 20px;
 }
 
-/* Estilos para a barra lateral */
 .container {
   display: flex;
 }
 
 .sidebar {
-  width: 250px; /* Largura da barra lateral */
-  background-color: #ffffff;
+  width: 250px;
+  background-color: #192734; /* Cor de fundo da barra lateral */
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -68,9 +67,8 @@ body {
   background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
 }
 
-/* Estilos para o conteúdo ao lado da barra lateral */
 .content {
-  flex: 1; /* O conteúdo ocupa todo o espaço restante */
+  flex: 1;
 }
 
 .nav-button {
@@ -98,7 +96,6 @@ body {
   margin-top: 30px;
 }
 
-/* Estilos para o modal */
 .modal {
   display: none;
   position: fixed;
@@ -112,16 +109,16 @@ body {
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: auto; /* Centraliza horizontalmente */
+  background-color: #192734; /* Cor de fundo do modal */
+  margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 80%;
-  max-width: 400px; /* Defina a largura máxima do modal */
-  position: relative; /* Para centralizar verticalmente */
-  top: 50%; /* Para centralizar verticalmente */
-  transform: translateY(-50%); /* Para centralizar verticalmente */
+  max-width: 400px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .close {
@@ -133,12 +130,11 @@ body {
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* Estilo para o input dentro do modal */
 .modal-content input[type="text"] {
   width: calc(100% - 20px);
   padding: 10px;
@@ -146,9 +142,10 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  background-color: #30444e; /* Cor de fundo do input dentro do modal */
+  color: #ffffff;
 }
 
-/* Estilo para o botão dentro do modal */
 .modal-content button {
   width: calc(100% - 20px);
   padding: 10px;
@@ -174,7 +171,6 @@ body {
   background-color: #c72052; /* Cor de destaque ao passar o mouse */
 }
 
-/* Estilo para o botão de assinatura */
 #localBotaoUpgrade {
   margin-top: 20px;
 }
@@ -196,7 +192,6 @@ body {
   background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
 }
 
-/* Estilos para a seção de informações importantes */
 #info {
   display: flex;
   flex-wrap: wrap;
@@ -205,51 +200,45 @@ body {
 }
 
 #info > div {
-  flex: 0 0 250px; /* Define uma largura fixa para as colunas */
+  flex: 0 0 calc(33.33% - 20px); /* Define uma largura flexível para as colunas */
   margin-bottom: 20px; /* Espaçamento entre as colunas */
   padding: 10px; /* Espaçamento interno das colunas */
-  background-color: #ececec; /* Cor de fundo para destacar as colunas */
-  border-radius: 5px; /* Borda arredondada */
+  background-color: #d3d3d3; /* Cor de fundo para destacar as colunas */
   transition: all 0.3s ease; /* Transição suave para todas as mudanças */
 }
 
 #info > div:hover {
-  transform: scale(1.05); /* Efeito de zoom in ao passar o mouse */
+  transform: scale(1.05);
 }
-
 
 .content h2 {
-  text-align: center; /* Centraliza o texto */
+  text-align: center;
 }
 
-/* Estilos para os botões de navegação */
 #navbuttons {
   display: flex;
-  justify-content: center; /* Centraliza os botões horizontalmente */
+  justify-content: center;
 }
 
 .nav-button {
-  margin: 0 10px; /* Espaçamento entre os botões */
+  margin: 0 10px;
 }
 
-/* Estilos para a seção de avisos de pagamento */
 #avisosPagamento {
-  text-align: center; /* Centraliza o texto */
+  text-align: center;
 }
 
-/* Estilos para a lista de avisos de pagamento */
 #listaAvisosPagamento {
   list-style-type: none;
   padding: 0;
 }
 
 #listaAvisosPagamento li {
-  margin-bottom: 20px; /* Adiciona espaço entre os itens */
-  padding-bottom: 20px; /* Adiciona espaço entre os itens */
-  border-bottom: 1px solid #ccc; /* Adiciona uma linha de separação */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
-/* Estilos para os botões de pagamento e cobrança */
 .pago-btn,
 .cobrar-btn {
   padding: 10px 20px;
@@ -258,80 +247,73 @@ body {
   cursor: pointer;
 }
 
-/* Estilos específicos para o botão de pagamento */
 .pago-btn {
-  background-color: #4CAF50; /* Cor de fundo para pagamento */
-  color: #ffffff; /* Cor do texto para pagamento */
+  background-color: #4CAF50;
+  color: #ffffff;
 }
 
-/* Estilos específicos para o botão de cobrança */
 .cobrar-btn {
-  background-color: #e0245e; /* Cor de fundo para cobrança */
-  color: #ffffff; /* Cor do texto para cobrança */
+  background-color: #e0245e;
+  color: #ffffff;
 }
 
-/* Adiciona margem à direita para o botão "Pago" */
 .pago-btn {
   margin-top:10px;
   margin-right: 10px;
 }
 
-/* Adiciona margem à esquerda para o botão "Cobrar por WhatsApp" */
 .cobrar-btn {
   margin-top:10px;
   margin-left: 10px;
 }
 
 .sidebar {
-  position: relative; /* Torna a barra lateral um contexto de posicionamento */
+  position: relative;
 }
 
 #toggleButton {
-  position: absolute; /* Posição absoluta em relação à barra lateral */
-  top: 10px; /* Distância do topo */
-  right: 10px; /* Distância da direita */
+  position: absolute;
+  top: 10px;
+  right: 10px;
   display: block;
-  padding: 8px 12px; /* Reduzindo o padding para diminuir o tamanho */
-  background-color: #1da1f2; /* Cor do Twitter */
+  padding: 8px 12px;
+  background-color: #1da1f2;
   color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 10px; /* Reduzindo o tamanho da fonte */
+  font-size: 10px;
 }
 
 #toggleButton:hover {
-  background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
+  background-color: #0d8bf2;
 }
 
-/* Adicione este CSS para ajustar o tamanho do sidebar */
 .sidebar.expandido {
   width: 250px;
   z-index:2 ;
 }
 
 .sidebar {
-  width: 50px; /* Largura retraída */
-  height: 50px; /* Altura retraída */
+  width: 50px;
+  height: 50px;
   background-color: #ffffff;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: width 0.5s ease, height 0.5s ease; /* Adiciona uma transição suave */
-  position: relative; /* Define a posição como relativa */
+  transition: width 0.5s ease, height 0.5s ease;
+  position: relative;
 }
 
-/* Adicione esta regra para tornar a imagem do perfil clicável */
 .perfil-imagem {
-  cursor: pointer; /* Altera o cursor para indicar que a imagem é clicável */
-  width: 50px; /* Largura da imagem */
-  height: 50px; /* Altura da imagem */
-  border-radius: 50%; /* Bordas arredondadas para criar uma aparência circular */
-  position: absolute; /* Define a posição como absoluta */
-  top: 20px; /* Ajusta a posição verticalmente */
-  left: 20px; /* Ajusta a posição horizontalmente */
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
-/* Adicione esta regra para esconder o botão "Mudar Tema" quando retraído */
 .sidebar.expandido #toggleButton {
   display: block;
 }
@@ -340,7 +322,6 @@ body {
   display: none;
 }
 
-/* Adicione este CSS para esconder os elementos dentro do sidebar quando retraído */
 .sidebar.expandido .dados,
 .sidebar.expandido .botoes {
   display: block;
@@ -351,52 +332,46 @@ body {
   display: none;
 }
 
-/* Adiciona estilo ao sidebar */
 .sidebar {
-  position: fixed; /* Mantém o sidebar fixo enquanto o usuário rola a página */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 50px; /* Largura inicial do sidebar retraído */
-  height: 100vh; /* Altura total da tela */
+  width: 50px;
+  height: 100vh;
   background-color: #ffffff;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: width 0.5s ease; /* Adiciona uma transição suave apenas para a largura */
-  z-index: 3; /* Certifica-se de que o sidebar esteja na frente de outros elementos */
+  transition: width 0.5s ease;
+  z-index: 3;
 }
 
-/* Estilo da imagem do perfil */
 .perfil-imagem {
-  cursor: pointer; /* Altera o cursor para indicar que a imagem é clicável */
-  width: 50px; /* Largura da imagem */
-  height: 50px; /* Altura da imagem */
-  border-radius: 50%; /* Bordas arredondadas para criar uma aparência circular */
-  position: absolute; /* Define a posição como absoluta */
-  top: 20px; /* Ajusta a posição verticalmente */
-  left: 20px; /* Ajusta a posição horizontalmente */
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
-/* Adiciona estilo ao botão "Mudar Tema" */
 #toggleButton {
-  display: none; /* Esconde o botão "Mudar Tema" */
+  display: none;
 }
 
-/* Estilo do sidebar expandido */
 .sidebar.expandido {
-  width: 250px; /* Largura expandida do sidebar */
+  width: 250px;
 }
 
-/* Estilo dos elementos dentro do sidebar */
 .sidebar.expandido .dados,
 .sidebar.expandido .botoes {
-  display: block; /* Mostra os elementos quando o sidebar estiver expandido */
+  display: block;
 }
 
 .swal2-container {
-  z-index: 4; /* Define a camada das janelas modais do Swal.fire */
+  z-index: 4;
 }
 
-/* Adicionar ao seu arquivo CSS */
 .card {
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -406,9 +381,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: inline-block;
   vertical-align: top;
-  opacity: 0; /* Inicialmente invisível */
-  transform: translateY(20px); /* Inicialmente deslocado para baixo */
-  transition: all 0.3s ease; /* Transição suave para todas as mudanças */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
 }
 
 .card-header {
@@ -432,26 +407,24 @@ body {
   justify-content: space-between;
 }
 
-/* Animação para quando os cards são visíveis */
 .card.visible {
-  opacity: 1; /* Torna o card visível */
-  transform: translateY(0) scale(1); /* Move o card para sua posição original e aplica um zoom de 105% */
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .card:hover {
-  transform: scale(1.05); /* Efeito de zoom in ao passar o mouse */
+  transform: scale(1.05);
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 1200px) {
   .card {
-    width: calc(45% - 10px); /* Dois cards por linha em telas médias */
+    width: calc(45% - 10px);
   }
 }
 
 @media (max-width: 768px) {
   .card {
-    width: calc(100% - 20px); /* Um card por linha em telas pequenas */
+    width: calc(100% - 20px);
   }
 
   #listaAvisosPagamento {
@@ -459,4 +432,3 @@ body {
     align-items: center;
   }
 }
-

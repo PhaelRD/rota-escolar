@@ -8,6 +8,7 @@ body {
 /* Estilos para a barra lateral */
 .container {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping for responsive layout */
 }
 
 .sidebar {
@@ -356,6 +357,7 @@ button:hover {
 /* Adicionado para organizar as seções lado a lado */
 #sectionsContainer {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping for responsive layout */
   gap: 20px;
 }
 
@@ -396,5 +398,9 @@ button:hover {
   margin-left: 5px;
 }
 
-
-
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  #sectionsContainer {
+    flex-direction: column;
+  }
+}

@@ -10,7 +10,7 @@ body {
 
 .sidebar {
   width: 250px;
-  background-color: #ffffff;
+  background-color: #192734;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -337,11 +337,11 @@ button {
   margin-top: 10px;
 }
 
-.button-voltar{
+.button-voltar {
   background-color: #c72052;
 }
 
-.button-voltar:hover{
+.button-voltar:hover {
   background-color: #c72052;
 }
 
@@ -355,7 +355,8 @@ button:hover {
   gap: 20px;
 }
 
-#formSection, #listaSection {
+#formSection,
+#listaSection {
   flex: 1;
   min-width: 300px;
 }
@@ -364,7 +365,6 @@ button:hover {
   height: 100%; /* Defina a altura que você deseja para a seção */
   overflow-y: auto; /* Adicione rolagem vertical se o conteúdo ultrapassar a altura */
 }
-
 
 /* Estilo do cartão */
 .card {
@@ -386,10 +386,16 @@ button:hover {
   padding: 10px 0;
 }
 
-
 /* Estilo da seta */
 .seta-icone {
   font-size: 12px;
   margin-left: 5px;
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+  #sectionsContainer {
+    flex-direction: column;
+  }
 }
 

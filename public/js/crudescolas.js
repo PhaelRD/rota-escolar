@@ -39,6 +39,7 @@ function salvarEscola() {
 }
 
 // Função para excluir escola e dados associados
+// Função para excluir escola e dados associados
 function excluirEscola(escolaId) {
     const userId = firebase.auth().currentUser.uid;
     Swal.fire({
@@ -53,12 +54,29 @@ function excluirEscola(escolaId) {
         if (result.isConfirmed) {
             const escolaRef = firebase.database().ref('users/' + userId + '/escolas/' + escolaId);
 
-            escolaRef.remove()
-                .then(() => {
-                    Swal.fire('Sucesso!', 'Escola excluída com sucesso!', 'success');
+            // Recuperar todos os alunos associados a essa escola
+            firebase.database().ref('users/' + userId + '/alunos').orderByChild('Escola_idEscola').equalTo(escolaId).once('value')
+                .then((snapshot) => {
+                    // Excluir cada aluno associado
+                    snapshot.forEach((childSnapshot) => {
+                        const alunoId = childSnapshot.key;
+                        firebase.database().ref('users/' + userId + '/alunos/' + alunoId).remove()
+                            .catch((error) => {
+                                console.error('Erro ao excluir aluno: ', error);
+                            });
+                    });
+
+                    // Após excluir todos os alunos associados, excluir a escola
+                    escolaRef.remove()
+                        .then(() => {
+                            Swal.fire('Sucesso!', 'Escola excluída com sucesso!', 'success');
+                        })
+                        .catch((error) => {
+                            console.error('Erro ao excluir escola: ', error);
+                        });
                 })
                 .catch((error) => {
-                    console.error('Erro ao excluir escola: ', error);
+                    console.error('Erro ao recuperar alunos associados à escola: ', error);
                 });
         }
     });
