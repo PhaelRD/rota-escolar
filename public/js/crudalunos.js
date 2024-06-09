@@ -1,4 +1,58 @@
-// Preencher o dropdown de escolas
+// Function to populate the student list
+function populateStudentList() {
+    const userId = firebase.auth().currentUser.uid;
+    const alunosRef = firebase.database().ref('users/' + userId + '/alunos');
+    const escolasRef = firebase.database().ref('users/' + userId + '/escolas');
+
+    const escolasData = {};
+
+    escolasRef.once('value', (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            const escola = childSnapshot.val();
+            escolasData[childSnapshot.key] = escola;
+        });
+
+        alunosRef.once('value', (snapshot) => {
+            const listaAlunos = document.getElementById('listaAlunos');
+            listaAlunos.innerHTML = '';
+
+            snapshot.forEach((childSnapshot) => {
+                const aluno = childSnapshot.val();
+                const alunoId = childSnapshot.key;
+                const escola = escolasData[aluno.Escola_idEscola];
+
+                const alunoDiv = document.createElement('div');
+                alunoDiv.classList.add('aluno-item');
+                alunoDiv.classList.add('card');
+                alunoDiv.innerHTML = `
+                    <div class="card-header" onclick="toggleDetalhesAluno(this)">
+                        <p class="nome-clicavel"><strong>Nome:</strong> ${aluno.nomeCompleto} <span class="seta-icone">&#9660;</span></p>
+                    </div>
+                    <div class="detalhes-aluno" style="display: none;">
+                        <div class="card-body">
+                            <p><strong>Escola:</strong> ${escola.nomeEscola}</p>
+                            <p><strong>Idade:</strong> ${aluno.idade}</p>
+                            <p><strong>Data de Vencimento:</strong> ${aluno.dataVencimento}</p>
+                            <p><strong>Valor:</strong> ${aluno.valor}</p>
+                            <p><strong>Período:</strong> ${aluno.periodo || 'N/A'}</p>
+                            <p><strong>Endereço:</strong> ${aluno.endereco.ruaResidencia}, ${aluno.endereco.numeroRua}</p>
+                            <p><strong>Responsável:</strong> ${aluno.responsavel.nomeCompleto}</p>
+                            <p><strong>Email do Responsável:</strong> ${aluno.responsavel.email}</p>
+                            <p><strong>Telefone do Responsável:</strong> ${aluno.responsavel.telefoneUm}</p>
+                            <p><strong>Outro Telefone do Responsável:</strong> ${aluno.responsavel.telefoneDois || 'N/A'}</p>
+                            <button class="btn editar-btn" onclick="editarAluno('${alunoId}', '${aluno.Escola_idEscola}', '${aluno.nomeCompleto}', '${aluno.idade}', '${aluno.dataVencimento}', '${aluno.valor}', '${aluno.periodo || ''}')">Editar</button>
+                            <button class="btn excluir-btn" onclick="excluirAluno('${alunoId}')">Excluir</button>
+                        </div>
+                    </div>
+                `;
+
+                listaAlunos.appendChild(alunoDiv);
+            });
+        });
+    });
+}
+
+// On Auth State Change: Populate School Dropdown and Student List
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         const userId = user.uid;
@@ -6,7 +60,7 @@ firebase.auth().onAuthStateChanged((user) => {
         const escolaSelect = document.getElementById('escolaSelect');
 
         escolasRef.on('value', (snapshot) => {
-            escolaSelect.innerHTML = ''; // Limpa o dropdown
+            escolaSelect.innerHTML = ''; // Clear the dropdown
             snapshot.forEach((childSnapshot) => {
                 const escola = childSnapshot.val();
                 const option = document.createElement('option');
@@ -15,12 +69,14 @@ firebase.auth().onAuthStateChanged((user) => {
                 escolaSelect.appendChild(option);
             });
         });
+
+        populateStudentList();
     }
 });
 
+// Save Student Information
 function salvarAluno() {
     const userId = firebase.auth().currentUser.uid;
-
     const alunoId = document.getElementById('alunoId').value;
     const escolaId = document.getElementById('escolaSelect').value;
     const nomeAluno = document.getElementById('nomeAluno').value;
@@ -57,27 +113,22 @@ function salvarAluno() {
     };
 
     if (alunoId) {
-        // Verificar se o aluno a ser editado já existe no banco de dados
+        // Update existing student
         firebase.database().ref('users/' + userId + '/alunos/' + alunoId).once('value')
             .then((snapshot) => {
                 if (snapshot.exists()) {
-                    // Aluno existe, permitir a edição
                     firebase.database().ref('users/' + userId + '/alunos/' + alunoId).update(novoAluno)
                         .then(() => {
                             Swal.fire('Sucesso!', 'Aluno atualizado com sucesso!', 'success');
                             resetFormularioAluno();
+                            populateStudentList();
                         })
                         .catch((error) => {
                             console.error('Erro ao atualizar aluno: ', error);
                         });
-
-                    // Atualizar dados do responsável
                     firebase.database().ref('users/' + userId + '/alunos/' + alunoId + '/responsavel').update(novoResponsavel);
-
-                    // Atualizar dados do endereço
                     firebase.database().ref('users/' + userId + '/alunos/' + alunoId + '/endereco').update(novoEndereco);
                 } else {
-                    // Aluno não existe, exibir mensagem de erro
                     Swal.fire('Erro!', 'O aluno a ser editado não existe no banco de dados.', 'error');
                 }
             })
@@ -85,7 +136,7 @@ function salvarAluno() {
                 console.error('Erro ao verificar se o aluno existe: ', error);
             });
     } else {
-        // Adicionar novo aluno
+        // Add new student
         firebase.database().ref('users/' + userId + '/alunos').once('value')
             .then((snapshot) => {
                 const numeroAlunosRegistrados = snapshot.numChildren();
@@ -93,24 +144,19 @@ function salvarAluno() {
                     .then((snapshot) => {
                         const numeroMaximoRegistros = snapshot.val();
                         if (numeroAlunosRegistrados >= numeroMaximoRegistros) {
-                            // Exibir mensagem de erro se o limite máximo de registros for atingido
                             Swal.fire('Limite máximo atingido!', 'Você já atingiu o limite máximo de registros de alunos.', 'error');
                         } else {
-                            // Continuar com a adição do aluno
                             const idAluno = "idAluno" + Date.now();
                             firebase.database().ref('users/' + userId + '/alunos/' + idAluno).set(novoAluno)
                                 .then(() => {
                                     Swal.fire('Sucesso!', 'Aluno adicionado com sucesso!', 'success');
                                     resetFormularioAluno();
+                                    populateStudentList();
                                 })
                                 .catch((error) => {
                                     console.error('Erro ao adicionar aluno: ', error);
                                 });
-
-                            // Adicionar dados do responsável
                             firebase.database().ref('users/' + userId + '/alunos/' + idAluno + '/responsavel').set(novoResponsavel);
-
-                            // Adicionar dados do endereço
                             firebase.database().ref('users/' + userId + '/alunos/' + idAluno + '/endereco').set(novoEndereco);
                         }
                     })
@@ -124,8 +170,7 @@ function salvarAluno() {
     }
 }
 
-
-// Função para excluir aluno
+// Delete Student
 function excluirAluno(alunoId) {
     const userId = firebase.auth().currentUser.uid;
 
@@ -142,6 +187,7 @@ function excluirAluno(alunoId) {
             firebase.database().ref('users/' + userId + '/alunos/' + alunoId).remove()
                 .then(() => {
                     Swal.fire('Sucesso!', 'Aluno excluído com sucesso!', 'success');
+                    populateStudentList();
                 })
                 .catch((error) => {
                     console.error('Erro ao excluir aluno: ', error);
@@ -150,9 +196,8 @@ function excluirAluno(alunoId) {
     });
 }
 
-// Função para preencher o formulário com os dados do aluno para edição
+// Edit Student Form Pre-fill
 function editarAluno(alunoId, escolaId, nome, idade, dataVencimento, valor, periodo) {
-    // Definindo os valores dos campos do formulário
     document.getElementById('alunoId').value = alunoId;
     document.getElementById('escolaSelect').value = escolaId;
     document.getElementById('nomeAluno').value = nome;
@@ -161,7 +206,6 @@ function editarAluno(alunoId, escolaId, nome, idade, dataVencimento, valor, peri
     document.getElementById('valorAluno').value = valor;
     document.getElementById('periodoAluno').value = periodo;
 
-    // Preenchendo os dados do responsável
     const userId = firebase.auth().currentUser.uid;
     firebase.database().ref('users/' + userId + '/alunos/' + alunoId + '/responsavel').once('value', (snapshot) => {
         const responsavel = snapshot.val();
@@ -173,7 +217,6 @@ function editarAluno(alunoId, escolaId, nome, idade, dataVencimento, valor, peri
         }
     });
 
-    // Preenchendo os dados do endereço
     firebase.database().ref('users/' + userId + '/alunos/' + alunoId + '/endereco').once('value', (snapshot) => {
         const endereco = snapshot.val();
         if (endereco) {
@@ -182,103 +225,34 @@ function editarAluno(alunoId, escolaId, nome, idade, dataVencimento, valor, peri
         }
     });
 
-    // Rolando para o topo da página
     window.scrollTo(0, 0);
 }
 
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        const userId = user.uid;
-        const alunosRef = firebase.database().ref('users/' + userId + '/alunos');
-        const escolasRef = firebase.database().ref('users/' + userId + '/escolas');
-
-        // Armazenar dados das escolas em um objeto
-        const escolasData = {};
-
-        // Carregar dados das escolas
-        escolasRef.once('value', (snapshot) => {
-            snapshot.forEach((childSnapshot) => {
-                const escola = childSnapshot.val();
-                escolasData[childSnapshot.key] = escola;
-            });
-
-            // Carregar dados dos alunos
-            alunosRef.once('value', (snapshot) => {
-                const listaAlunos = document.getElementById('listaAlunos');
-                listaAlunos.innerHTML = '';
-
-                snapshot.forEach((childSnapshot) => {
-                    const aluno = childSnapshot.val();
-                    const alunoId = childSnapshot.key;
-
-                    // Obter o nome da escola associada ao aluno a partir dos dados armazenados
-                    const escola = escolasData[aluno.Escola_idEscola];
-
-                    // Criar a div do aluno
-                    const alunoDiv = document.createElement('div');
-                    alunoDiv.classList.add('aluno-item');
-
-                    // Adicionando estilos sugeridos
-                    alunoDiv.classList.add('card'); // Classe para definir um estilo de cartão
-                    alunoDiv.innerHTML = `
-                        <div class="card-header" onclick="toggleDetalhesAluno(this)">
-                            <p class="nome-clicavel"><strong>Nome:</strong> ${aluno.nomeCompleto} <span class="seta-icone">&#9660;</span></p>
-                        </div>
-                        <div class="detalhes-aluno" style="display: none;">
-                            <div class="card-body">
-                                <p><strong>Escola:</strong> ${escola.nomeEscola}</p>
-                                <p><strong>Idade:</strong> ${aluno.idade}</p>
-                                <p><strong>Data de Vencimento:</strong> ${aluno.dataVencimento}</p>
-                                <p><strong>Valor:</strong> ${aluno.valor}</p>
-                                <p><strong>Período:</strong> ${aluno.periodo || 'N/A'}</p>
-                                <p><strong>Endereço:</strong> ${aluno.endereco.ruaResidencia}, ${aluno.endereco.numeroRua}</p>
-                                <p><strong>Responsável:</strong> ${aluno.responsavel.nomeCompleto}</p>
-                                <p><strong>Email do Responsável:</strong> ${aluno.responsavel.email}</p>
-                                <p><strong>Telefone do Responsável:</strong> ${aluno.responsavel.telefoneUm}</p>
-                                <p><strong>Outro Telefone do Responsável:</strong> ${aluno.responsavel.telefoneDois || 'N/A'}</p>
-                                <button class="btn editar-btn" onclick="editarAluno('${alunoId}', '${aluno.Escola_idEscola}', '${aluno.nomeCompleto}', '${aluno.idade}', '${aluno.dataVencimento}', '${aluno.valor}', '${aluno.periodo || ''}')">Editar</button>
-                                <button class="btn excluir-btn" onclick="excluirAluno('${alunoId}')">Excluir</button>
-                            </div>
-                        </div>
-                    `;
-
-                    listaAlunos.appendChild(alunoDiv);
-                });
-            });
-        });
-    }
-});
-
-
-
-
-// Função para alternar a visibilidade dos detalhes do aluno e modificar o ícone da seta
+// Toggle Student Details Visibility
 function toggleDetalhesAluno(element) {
     const detalhesAluno = element.nextElementSibling;
     const setaIcone = element.querySelector('.seta-icone');
     if (detalhesAluno.style.display === 'none') {
         detalhesAluno.style.display = 'block';
-        setaIcone.innerHTML = '&#9650;'; // Altera o ícone para a seta para cima
+        setaIcone.innerHTML = '&#9650;';
     } else {
         detalhesAluno.style.display = 'none';
-        setaIcone.innerHTML = '&#9660;'; // Altera o ícone para a seta para baixo
+        setaIcone.innerHTML = '&#9660;';
     }
 }
 
-// Função para alterar o cursor do mouse quando passar sobre o nome
+// Change Cursor on Hover
 function changeCursor(element) {
     element.style.cursor = 'pointer';
 }
 
-// Função para redefinir o cursor do mouse quando não estiver mais sobre o nome
+// Reset Cursor on Mouse Out
 function resetCursor(element) {
     element.style.cursor = 'auto';
 }
 
-
+// Reset Form
 function resetFormularioAluno() {
-    // Limpar os valores dos campos do formulário
     document.getElementById('alunoId').value = '';
     document.getElementById('escolaSelect').value = '';
     document.getElementById('nomeAluno').value = '';
@@ -293,4 +267,3 @@ function resetFormularioAluno() {
     document.getElementById('ruaAluno').value = '';
     document.getElementById('numeroRuaAluno').value = '';
 }
-
