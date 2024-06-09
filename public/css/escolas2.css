@@ -286,7 +286,7 @@ body {
 }
 
 header {
-  background-color: #192734;
+  background-color: #15202b;
   color: #ffffff;
   padding: 20px;
   text-align: center;
@@ -407,4 +407,81 @@ button:hover {
   #sectionsContainer {
     flex-direction: column;
   }
+}
+
+.imagem-abaixo-botao {
+  display: block;
+  margin: 20px auto 0; /* Espaçamento acima da imagem e centralização horizontal */
+  width: 100px; /* Ajuste a largura conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 5px; /* Bordas arredondadas, opcional */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
+}
+
+#formSection,
+#listaSection {
+  background-color: #192734;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+#formSection h2,
+#listaSection h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+#formEscola label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#formEscola input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #3b3b3b;
+  color: #ffffff;
+  font-size: 1em;
+}
+
+#formEscola input::placeholder {
+  color: #bbb;
+}
+
+#formEscola button {
+  width: 100%;
+  padding: 15px;
+  background-color: #1da1f2;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#formEscola button:hover {
+  background-color: #0d8bf2;
+}
+
+#listaEscolas {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#listaEscolas li {
+  margin-bottom: 10px;
+  background-color: #3b3b3b;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
 }

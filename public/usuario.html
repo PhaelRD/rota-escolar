@@ -66,7 +66,9 @@
       <div class="botoes">
         <button onclick="window.open('https://wa.me/5511984536653', '_blank')" class="button button-contato">Entre em contato</button>
         <button onclick="logout()" class="button button-logout">Sair</button>
+        <img src="img/logo.png" alt="Descrição da Imagem" class="imagem-abaixo-botao">
       </div>
+
     </div>
 
     <div class="content">
@@ -126,35 +128,26 @@
   </script>
 
   <script>
-    // Captura o botão de alternância
+    // Alternar tema
     const toggleButton = document.getElementById('toggleButton');
+    let isUsuario1 = localStorage.getItem('isUsuario1') === 'true';
 
-    // Define uma variável para controlar o estado do estilo
-    let isUsuario1 = localStorage.getItem('isUsuario1') === 'true'; // Verifica se o estado anterior foi definido como "true"
-
-    // Função para alternar o estilo do tema
     function toggleTheme() {
-        if (isUsuario1) {
-            // Alterna para o arquivo de estilo usuario2.css
-            document.getElementById('stylesheet').href = 'css/usuario2.css';
-        } else {
-            // Alterna para o arquivo de estilo usuario.css
-            document.getElementById('stylesheet').href = 'css/usuario.css';
-        }
+      const stylesheet = document.getElementById('stylesheet');
+      if (isUsuario1) {
+        stylesheet.href = 'css/usuario2.css';
+      } else {
+        stylesheet.href = 'css/usuario.css';
+      }
     }
 
-    // Adiciona um evento de clique ao botão de alternância
     toggleButton.addEventListener('click', () => {
-        // Inverte o estado do tema
-        isUsuario1 = !isUsuario1;
-        // Armazena o estado atual no armazenamento local do navegador
-        localStorage.setItem('isUsuario1', isUsuario1);
-        // Chama a função para alternar o tema
-        toggleTheme();
+      isUsuario1 = !isUsuario1;
+      localStorage.setItem('isUsuario1', isUsuario1);
+      toggleTheme();
     });
 
-    // Chama a função para alternar o tema ao carregar a página   
-    toggleTheme();
+    document.addEventListener('DOMContentLoaded', toggleTheme);
 
   </script>
 

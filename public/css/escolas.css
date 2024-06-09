@@ -47,7 +47,7 @@ body {
 
 .info {
   font-size: 16px;
-  color: #657786;
+  color: #000000;
 }
 
 .button {
@@ -246,7 +246,7 @@ body {
   left: 0;
   width: 50px;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: #d3d3d3;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: width 0.5s ease;
@@ -281,7 +281,7 @@ body {
 }
 
 header {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   color: #000000;
   padding: 20px;
   text-align: center;
@@ -302,7 +302,7 @@ header button {
 }
 
 section {
-  background-color: #f2f2f2;
+  background-color: #e7e7e7;
   color: #000000;
   padding: 20px;
   margin-top: 20px;
@@ -403,3 +403,81 @@ button:hover {
   }
 }
 
+.imagem-abaixo-botao {
+  display: block;
+  margin: 20px auto 0; /* Espaçamento acima da imagem e centralização horizontal */
+  width: 100px; /* Ajuste a largura conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 5px; /* Bordas arredondadas, opcional */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
+  background-color: #333;
+
+}
+
+#formSection,
+#listaSection {
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+#formSection h2,
+#listaSection h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#formEscola label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+#formEscola input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1em;
+}
+
+#formEscola input::placeholder {
+  color: #bbb;
+}
+
+#formEscola button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#formEscola button:hover {
+  background-color: #0056b3;
+}
+
+#listaEscolas {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#listaEscolas li {
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

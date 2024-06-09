@@ -1,0 +1,112 @@
+/* Reset básico para remover margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Estilo do corpo */
+  body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Estilo do cabeçalho */
+  header {
+    margin-bottom: 20px;
+  }
+  
+  header h1 {
+    font-size: 2em;
+    color: #1da1f2;
+  }
+  
+  /* Estilo da seção do formulário */
+  #formSection {
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  #formSection h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #1da1f2;
+  }
+  
+  #formSection h3 {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #1da1f2;
+  }
+  
+  /* Estilo dos labels e inputs */
+  #formAluno label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  #formAluno input,
+  #formAluno select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #3b3b3b;
+    color: #ffffff;
+    font-size: 1em;
+  }
+  
+  #formAluno input::placeholder {
+    color: #bbb;
+  }
+  
+  /* Estilo do botão */
+  #formAluno button {
+    width: 100%;
+    padding: 15px;
+    background-color: #1da1f2;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #formAluno button:hover {
+    background-color: #0d8bf2;
+  }
+  
+  /* Estilo da seção de valor */
+  #valorSection {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #3b3b3b;
+    border-radius: 5px;
+    color: #ffffff;
+  }
+  
+  #valorSection h2 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #1da1f2;
+  }
+  
+  #valorMensalidade {
+    font-size: 1.1em;
+    color: #ffffff;
+  }
+  

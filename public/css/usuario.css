@@ -46,7 +46,7 @@ body {
 
 .info {
   font-size: 16px;
-  color: #657786; /* Cor de texto padrão do Twitter */
+  color: #000000; /* Cor de texto padrão do Twitter */
 }
 
 .button {
@@ -109,7 +109,7 @@ body {
 }
 
 .modal-content {
-  background-color: #192734; /* Cor de fundo do modal */
+  background-color: #fefefe; /* Cor de fundo do modal */
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -142,7 +142,6 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  background-color: #30444e; /* Cor de fundo do input dentro do modal */
   color: #ffffff;
 }
 
@@ -203,7 +202,7 @@ body {
   flex: 0 0 calc(33.33% - 20px); /* Define uma largura flexível para as colunas */
   margin-bottom: 20px; /* Espaçamento entre as colunas */
   padding: 10px; /* Espaçamento interno das colunas */
-  background-color: #d3d3d3; /* Cor de fundo para destacar as colunas */
+  background-color: #e7e7e7; /* Cor de fundo para destacar as colunas */
   transition: all 0.3s ease; /* Transição suave para todas as mudanças */
 }
 
@@ -338,7 +337,7 @@ body {
   left: 0;
   width: 50px;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: #d3d3d3;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: width 0.5s ease;
@@ -373,7 +372,6 @@ body {
 }
 
 .card {
-  border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
   margin: 10px 5px;
@@ -408,6 +406,7 @@ body {
 }
 
 .card.visible {
+  background-color: #cacaca;
   opacity: 1;
   transform: translateY(0) scale(1);
 }
@@ -431,4 +430,15 @@ body {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.imagem-abaixo-botao {
+  display: block;
+  margin: 20px auto 0; /* Espaçamento acima da imagem e centralização horizontal */
+  width: 100px; /* Ajuste a largura conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 5px; /* Bordas arredondadas, opcional */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
+  background-color: #333;
+
 }

@@ -63,6 +63,7 @@
       <div class="botoes">
         <button onclick="window.open('https://wa.me/5511984536653', '_blank')" class="button button-contato">Entre em contato</button>
         <button onclick="logout()" class="button button-logout">Sair</button>
+        <img src="img/logo.png" alt="Descrição da Imagem" class="imagem-abaixo-botao">
       </div>
     </div>
 
@@ -117,26 +118,29 @@
     });
   </script>
 
-  <script>
-    const toggleButton = document.getElementById('toggleButton');
-    let isUsuario1 = localStorage.getItem('isUsuario1') === 'true';
+<script>
+  // Alternar tema
+  const toggleButton = document.getElementById('toggleButton');
+  let isUsuario1 = localStorage.getItem('isUsuario1') === 'true';
 
-    function toggleTheme() {
-      if (isUsuario1) {
-        document.getElementById('stylesheet').href = 'css/escolas2.css';
-      } else {
-        document.getElementById('stylesheet').href = 'css/escolas.css';
-      }
+  function toggleTheme() {
+    const stylesheet = document.getElementById('stylesheet');
+    if (isUsuario1) {
+      stylesheet.href = 'css/escolas2.css';
+    } else {
+      stylesheet.href = 'css/escolas.css';
     }
+  }
 
-    toggleButton.addEventListener('click', () => {
-      isUsuario1 = !isUsuario1;
-      localStorage.setItem('isUsuario1', isUsuario1);
-      toggleTheme();
-    });
-
+  toggleButton.addEventListener('click', () => {
+    isUsuario1 = !isUsuario1;
+    localStorage.setItem('isUsuario1', isUsuario1);
     toggleTheme();
-  </script>
+  });
+
+  document.addEventListener('DOMContentLoaded', toggleTheme);
+
+</script>
 
   <script src="js/firebase.js"></script>
   <script src="js/crudescolas.js"></script>

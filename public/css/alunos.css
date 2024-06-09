@@ -47,7 +47,7 @@ body {
   
   .info {
     font-size: 16px;
-    color: #657786; /* Cor de texto padrão do Twitter */
+    color: #000000; /* Cor de texto padrão do Twitter */
   }
   
   .button {
@@ -262,7 +262,7 @@ body {
     left: 0;
     width: 50px; /* Largura inicial do sidebar retraído */
     height: 100vh; /* Altura total da tela */
-    background-color: #ffffff;
+    background-color: #d3d3d3;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: width 0.5s ease; /* Adiciona uma transição suave apenas para a largura */
@@ -305,7 +305,7 @@ header {
     color: #000000; /* Cor do texto */
     padding: 20px; /* Espaçamento interno */
     text-align: center; /* Centraliza o texto */
-    background-color: #f0f0f0; /* Cor de fundo */
+    background-color: #ffffff; /* Cor de fundo */
   }
   
   header h1 {
@@ -325,7 +325,7 @@ header {
   
   /* Estilos para as seções */
   section {
-    background-color: #f2f2f2; /* Cor de fundo clara */
+    background-color: #e7e7e7; /* Cor de fundo clara */
     color: #000000; /* Cor do texto */
     padding: 20px; /* Espaçamento interno */
     margin-top: 20px; /* Espaçamento superior */
@@ -432,3 +432,104 @@ header {
   margin-left: 5px;
 }
 
+.imagem-abaixo-botao {
+  display: block;
+  margin: 20px auto 0; /* Espaçamento acima da imagem e centralização horizontal */
+  width: 100px; /* Ajuste a largura conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 5px; /* Bordas arredondadas, opcional */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
+  background-color: #333;
+
+}
+
+#formSection,
+#formSection2,
+#reajuste,
+#pesquisaSection,
+#listaSection {
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  color: #333;
+}
+
+#formSection h2,
+#formSection2 h2,
+#reajuste h2,
+#pesquisaSection h2,
+#listaSection h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+#formAluno label,
+#formMensalidade label,
+#reajuste label,
+#pesquisaSection label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#formAluno input,
+#formAluno select,
+#formMensalidade input,
+#reajuste input,
+#pesquisaSection input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1em;
+}
+
+#formAluno input::placeholder,
+#formAluno select::placeholder,
+#formMensalidade input::placeholder,
+#reajuste input::placeholder,
+#pesquisaSection input::placeholder {
+  color: #bbb;
+}
+
+#formAluno button,
+#formMensalidade button,
+#reajuste button,
+#pesquisaSection button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#formAluno button:hover,
+#formMensalidade button:hover,
+#reajuste button:hover,
+#pesquisaSection button:hover {
+  background-color: #0056b3;
+}
+
+.alunos-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.alunos-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

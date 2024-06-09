@@ -47,7 +47,7 @@ body {
   
   .info {
     font-size: 16px;
-    color: #657786; /* Cor de texto padrão do Twitter */
+    color: #000000; /* Cor de texto padrão do Twitter */
   }
   
   .button {
@@ -248,7 +248,7 @@ body {
     left: 0;
     width: 50px; /* Largura inicial do sidebar retraído */
     height: 100vh; /* Altura total da tela */
-    background-color: #ffffff;
+    background-color: #d3d3d3;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: width 0.5s ease; /* Adiciona uma transição suave apenas para a largura */
@@ -300,13 +300,17 @@ header h1 {
 
 /* Estilos para o botão de voltar */
 header button {
-    background-color: #1da1f2; /* Cor de fundo */
+    background-color: #e0245e; /* Cor de fundo */
     color: #ffffff; /* Cor do texto */
     border: none; /* Remove a borda */
     padding: 8px 16px; /* Espaçamento interno */
     border-radius: 5px; /* Borda arredondada */
     cursor: pointer; /* Altera o cursor ao passar por cima */
     margin-top: 10px; /* Espaçamento superior */
+}
+
+header button:hover{
+  background-color: #e0245e;
 }
 
 /* Estilos para as seções */
@@ -384,22 +388,93 @@ button:hover {
     margin-bottom: 10px; /* Espaçamento inferior */
 }
 
-/* Container flexível para as seções principais */
-#principal, #secundario {
+.imagem-abaixo-botao {
+  display: block;
+  margin: 20px auto 0; /* Espaçamento acima da imagem e centralização horizontal */
+  width: 100px; /* Ajuste a largura conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 5px; /* Bordas arredondadas, opcional */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
+  background-color: #333;
+
+}
+
+#form {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-/* Estilo para as caixas individuais */
-.box {
-  width: 48%; /* Ajuste a largura conforme necessário */
-  margin-bottom: 20px; /* Espaço entre as caixas */
+#principal,
+#principal2,
+#secundario,
+#secundario2 {
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  flex: 1;
+  color: #333;
 }
 
-/* Certifique-se de que o conteúdo se adapte bem a telas menores */
-@media (max-width: 768px) {
-  .box {
-    width: 100%;
-  }
+#principal h2,
+#principal2 h2,
+#secundario h2,
+#secundario2 h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #000000;
 }
+
+#principal label,
+#principal2 label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#principal input,
+#principal2 input {
+  width: calc(100% - 10px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1em;
+}
+
+#principal input[type="month"],
+#principal2 input[type="month"] {
+  width: 100%;
+}
+
+#principal button,
+#principal2 button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#principal button:hover,
+#principal2 button:hover {
+  background-color: #0056b3;
+}
+
+#secundario ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#secundario ul li {
+  margin-bottom: 10px;
+}
+
+
