@@ -254,12 +254,14 @@ body {
   
   /* Adicione este CSS para esconder os elementos dentro do sidebar quando retraído */
   .sidebar.expandido .dados,
-  .sidebar.expandido .botoes {
+  .sidebar.expandido .botoes,
+  .sidebar.expandido .logo {
     display: block;
   }
   
   .sidebar .dados,
-  .sidebar .botoes {
+  .sidebar .botoes,
+  .sidebar .logo {
     display: none;
   }
   
@@ -300,7 +302,8 @@ body {
   
   /* Estilo dos elementos dentro do sidebar */
   .sidebar.expandido .dados,
-  .sidebar.expandido .botoes {
+  .sidebar.expandido .botoes,
+  .sidebar.expandido .logo {
     display: block; /* Mostra os elementos quando o sidebar estiver expandido */
   }
   

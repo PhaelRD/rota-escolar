@@ -325,12 +325,14 @@ body {
   }
   
 .sidebar.expandido .dados,
-.sidebar.expandido .botoes {
+.sidebar.expandido .botoes,
+.sidebar.expandido .logo {
     display: block;
   }
   
 .sidebar .dados,
-.sidebar .botoes {
+.sidebar .botoes,
+.sidebar .logo {
     display: none;
   }
   
@@ -366,7 +368,8 @@ body {
   }
   
 .sidebar.expandido .dados,
-.sidebar.expandido .botoes {
+.sidebar.expandido .botoes,
+.sidebar.expandido .logo {
     display: block;
   }
   

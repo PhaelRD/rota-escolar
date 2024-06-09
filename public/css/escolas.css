@@ -231,12 +231,14 @@ body {
 }
 
 .sidebar.expandido .dados,
-.sidebar.expandido .botoes {
+.sidebar.expandido .botoes,
+.sidebar.expandido .logo {
   display: block;
 }
 
 .sidebar .dados,
-.sidebar .botoes {
+.sidebar .botoes,
+.sidebar .logo {
   display: none;
 }
 
@@ -272,7 +274,8 @@ body {
 }
 
 .sidebar.expandido .dados,
-.sidebar.expandido .botoes {
+.sidebar.expandido .botoes,
+.sidebar.expandido .logo {
   display: block;
 }
 
@@ -410,7 +413,7 @@ button:hover {
   height: auto; /* Mantém a proporção da imagem */
   border-radius: 5px; /* Bordas arredondadas, opcional */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
-  background-color: #333;
+  padding: 5px;
 
 }
 
