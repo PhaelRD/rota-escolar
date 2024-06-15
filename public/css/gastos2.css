@@ -1,493 +1,369 @@
+/* Variáveis para cores */
+:root {
+  --bg-dark: #15202b;
+  --bg-sidebar: #192734;
+  --bg-input: #30444e;
+  --bg-twitter: #1da1f2;
+  --bg-twitter-hover: #0d8bf2;
+  --bg-red-twitter: #e0245e;
+  --bg-red-hover: #c72052;
+  --color-white: #ffffff;
+  --color-twitter: #1da1f2;
+  --color-light-grey: #ccc;
+}
+
 /* Estilos para o corpo da página */
 body {
-    margin-left: 100px; /* Margem à esquerda */
-    margin-right: 20px; /* Margem à direita */
-    background-color: #15202b; /* Cor de fundo escura */
-    color: #ffffff; /* Cor do texto */
-  }
-  
-  /* Estilos para a barra lateral */
-  .container {
-    display: flex;
-  }
-  
-  .sidebar {
-    width: 250px; /* Largura da barra lateral */
-    background-color: #192734; /* Cor de fundo da barra lateral */
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .titulo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #1da1f2; /* Cor do Twitter */
-    margin-bottom: 20px;
-  }
-  
-  .perfil {
-    margin-bottom: 30px;
-  }
-  
-  .perfil-imagem {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  
-  .dados {
-    margin-top: 20px;
-  }
-  
-  .nome,
-  .email {
-    margin-bottom: 10px;
-  }
+  margin-left: 100px;
+  margin-right: 20px;
+  background-color: var(--bg-dark);
+  color: var(--color-white);
+}
 
-  .nome{
-    margin-top: 70px;
-  }
-  
-  .info {
-    font-size: 16px;
-    color: #ffffff; /* Cor do texto */
-  }
-  
-  .button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #1da1f2; /* Cor do Twitter */
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .button:hover {
-    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
-  }
-  
-  /* Estilos para o conteúdo ao lado da barra lateral */
-  .content {
-    flex: 1; /* O conteúdo ocupa todo o espaço restante */
-    padding: 20px;
-  }
-  
-  .nav-button {
-    display: block;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #1da1f2; /* Cor do Twitter */
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: left;
-  }
-  
-  .nav-button:hover {
-    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
-  }
+/* Estilos para a barra lateral */
+.container {
+  display: flex;
+}
 
-  /* Estilos para o modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-  }
-  
-  .modal-content {
-    background-color: #192734; /* Cor de fundo do modal */
-    margin: auto; /* Centraliza horizontalmente */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 400px; /* Defina a largura máxima do modal */
-    position: relative; /* Para centralizar verticalmente */
-    top: 50%; /* Para centralizar verticalmente */
-    transform: translateY(-50%); /* Para centralizar verticalmente */
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #ffffff;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* Estilo para o input dentro do modal */
-  .modal-content input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #30444e; /* Cor de fundo do input */
-    color: #ffffff; /* Cor do texto do input */
-  }
-  
-  /* Estilo para o botão dentro do modal */
-  .modal-content button {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #1da1f2; /* Cor do Twitter */
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .modal-content button:hover {
-    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
-  }
-  
-  
-  .button-logout {
-    background-color: #e0245e; /* Cor vermelha do Twitter */
-  }
-  
-  .button-logout:hover {
-    background-color: #c72052; /* Cor de destaque ao passar o mouse */
-  }
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100vh;
+  background-color: #333;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: 3;
+}
 
- /* Estilo para o botão de assinatura */
- #localBotaoUpgrade {
-    margin-top: 20px;
-  }
-  
-  #localBotaoUpgrade button {
-    display: block;
-    padding: 10px;
-    background-color: #1da1f2; /* Cor do Twitter */
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  #localBotaoUpgrade button:hover {
-    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
-  }
+.sidebar.expandido {
+  width: 250px;
+  z-index: 2;
+}
 
-  .sidebar {
-    position: relative; /* Torna a barra lateral um contexto de posicionamento */
-  }
-  
-  #toggleButton {
-    position: absolute; /* Posição absoluta em relação à barra lateral */
-    top: 10px; /* Distância do topo */
-    right: 10px; /* Distância da direita */
-    display: block;
-    padding: 8px 12px; /* Reduzindo o padding para diminuir o tamanho */
-    background-color: #1da1f2; /* Cor do Twitter */
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 10px; /* Reduzindo o tamanho da fonte */
-  }
-  
-  #toggleButton:hover {
-    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
-  }
-  
-  /* Adicione este CSS para ajustar o tamanho do sidebar */
-  .sidebar.expandido {
-    width: 250px;
-    z-index:2 ;
-  }
-  
-  .sidebar {
-    width: 50px; /* Largura retraída */
-    height: 50px; /* Altura retraída */
-    background-color: #333;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: width 0.5s ease, height 0.5s ease; /* Adiciona uma transição suave */
-    position: relative; /* Define a posição como relativa */
-  }
-  
-  /* Adicione esta regra para tornar a imagem do perfil clicável */
-  .perfil-imagem {
-    cursor: pointer; /* Altera o cursor para indicar que a imagem é clicável */
-    width: 50px; /* Largura da imagem */
-    height: 50px; /* Altura da imagem */
-    border-radius: 50%; /* Bordas arredondadas para criar uma aparência circular */
-    position: absolute; /* Define a posição como absoluta */
-    top: 20px; /* Ajusta a posição verticalmente */
-    left: 20px; /* Ajusta a posição horizontalmente */
-  }
-  
-  /* Adicione esta regra para esconder o botão "Mudar Tema" quando retraído */
-  .sidebar.expandido #toggleButton {
-    display: block;
-  }
-  
-  .sidebar #toggleButton {
-    display: none;
-  }
-  
-  /* Adicione este CSS para esconder os elementos dentro do sidebar quando retraído */
-  .sidebar.expandido .dados,
-  .sidebar.expandido .botoes,
-  .sidebar.expandido .logo {
-    display: block;
-  }
-  
-  .sidebar .dados,
-  .sidebar .botoes,
-  .sidebar .logo {
-    display: none;
-  }
-  
-  /* Adiciona estilo ao sidebar */
-  .sidebar {
-    position: fixed; /* Mantém o sidebar fixo enquanto o usuário rola a página */
-    top: 0;
-    left: 0;
-    width: 50px; /* Largura inicial do sidebar retraído */
-    height: 100vh; /* Altura total da tela */
-    background-color: #333;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: width 0.5s ease; /* Adiciona uma transição suave apenas para a largura */
-    z-index: 3; /* Certifica-se de que o sidebar esteja na frente de outros elementos */
-  }
-  
-  /* Estilo da imagem do perfil */
-  .perfil-imagem {
-    cursor: pointer; /* Altera o cursor para indicar que a imagem é clicável */
-    width: 50px; /* Largura da imagem */
-    height: 50px; /* Altura da imagem */
-    border-radius: 50%; /* Bordas arredondadas para criar uma aparência circular */
-    position: absolute; /* Define a posição como absoluta */
-    top: 20px; /* Ajusta a posição verticalmente */
-    left: 20px; /* Ajusta a posição horizontalmente */
-  }
-  
-  /* Adiciona estilo ao botão "Mudar Tema" */
-  #toggleButton {
-    display: none; /* Esconde o botão "Mudar Tema" */
-  }
-  
-  /* Estilo do sidebar expandido */
-  .sidebar.expandido {
-    width: 250px; /* Largura expandida do sidebar */
-  }
-  
-  /* Estilo dos elementos dentro do sidebar */
-  .sidebar.expandido .dados,
-  .sidebar.expandido .botoes,
-  .sidebar.expandido .logo {
-    display: block; /* Mostra os elementos quando o sidebar estiver expandido */
-  }
-  
-  .swal2-container {
-    z-index: 4; /* Define a camada das janelas modais do Swal.fire */
-  }
+.sidebar .dados,
+.sidebar .botoes,
+.sidebar .logo {
+  display: none;
+}
+
+.sidebar.expandido .dados,
+.sidebar.expandido .botoes,
+.sidebar.expandido .logo {
+  display: block;
+}
+
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1da1f2;
+  margin-bottom: 20px;
+}
+
+.perfil {
+  margin-bottom: 30px;
+}
+
+.dados {
+  margin-top: 20px;
+}
+
+.nome,
+.email {
+  margin-bottom: 10px;
+}
+
+.nome {
+  margin-top: 70px;
+}
+
+.info {
+  font-size: 16px;
+}
+
+.sidebar .perfil-imagem {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#toggleButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  padding: 8px 12px;
+  background-color: var(--bg-twitter);
+  color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.sidebar.expandido #toggleButton {
+  display: block;
+}
+
+#toggleButton:hover {
+  background-color: var(--bg-twitter-hover);
+}
+
+/* Estilos para os títulos */
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-twitter);
+  margin-bottom: 20px;
+}
+
+/* Estilos para o conteúdo */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Estilos para botões */
+.button, .nav-button, .modal-content button, #localBotaoUpgrade button, header button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--bg-twitter);
+  color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button:hover, .nav-button:hover, .modal-content button:hover, #localBotaoUpgrade button:hover, header button:hover {
+  background-color: var(--bg-twitter-hover);
+}
+
+.button-logout {
+  background-color: var(--bg-red-twitter);
+}
+
+.button-logout:hover {
+  background-color: var(--bg-red-hover);
+}
+
+header button {
+  background-color: var(--bg-red-twitter);
+}
+
+header button:hover {
+  background-color: var(--bg-red-hover);
+}
+
+/* Estilos para o botão de exclusão */
+.delete-button {
+  margin-left: 10px; /* Adiciona margem à esquerda */
+  padding: 10px 20px; /* Espaçamento interno */
+  background-color: #e0245e; /* Cor de fundo vermelha */
+  color: #ffffff; /* Cor do texto */
+  border: none; /* Remove a borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Altera o cursor ao passar por cima */
+  font-size: 16px; /* Tamanho da fonte */
+  transition: background-color 0.3s ease; /* Transição suave para a mudança de cor */
+}
+
+.delete-button:hover {
+  background-color: #c72052; /* Cor de fundo ao passar o mouse */
+}
+
+
+/* Estilos para modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: var(--bg-sidebar);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--color-light-grey);
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: var(--color-white);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilo para input no modal */
+.modal-content input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid var(--color-light-grey);
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: var(--bg-input);
+  color: var(--color-white);
+}
 
 /* Estilos para o cabeçalho */
 header {
-    background-color: #15202b; /* Cor de fundo escura */
-    color: #ffffff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno */
-    text-align: center; /* Centraliza o texto */
+  background-color: var(--bg-dark);
+  color: var(--color-white);
+  padding: 20px;
+  text-align: center;
 }
 
 header h1 {
-    margin: 0; /* Remove margem padrão */
-}
-
-/* Estilos para o botão de voltar */
-header button {
-    background-color: #e0245e; /* Cor de fundo */
-    color: #ffffff; /* Cor do texto */
-    border: none; /* Remove a borda */
-    padding: 8px 16px; /* Espaçamento interno */
-    border-radius: 5px; /* Borda arredondada */
-    cursor: pointer; /* Altera o cursor ao passar por cima */
-    margin-top: 10px; /* Espaçamento superior */
-}
-
-header button:hover{
-  background-color: #e0245e;
+  margin: 0;
 }
 
 /* Estilos para as seções */
 section {
-    background-color: #192734; /* Cor de fundo escura */
-    color: #ffffff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno */
-    margin-top: 20px; /* Espaçamento superior */
+  background-color: var(--bg-sidebar);
+  color: var(--color-white);
+  padding: 20px;
+  margin-top: 20px;
 }
 
-/* Estilos para os títulos das seções */
 section h2 {
-    margin-bottom: 10px; /* Espaçamento inferior */
+  margin-bottom: 10px;
 }
 
-/* Estilos para os rótulos dos campos */
+/* Estilos para labels */
 label {
-    display: block; /* Exibe em bloco para colocar em uma linha */
-    margin-top: 10px; /* Espaçamento superior */
+  display: block;
+  margin-top: 10px;
 }
 
-/* Estilos para os campos de entrada */
-input[type="text"],
-input[type="number"],
-input[type="month"] {
-    width: 100%; /* Largura total */
-    padding: 8px; /* Espaçamento interno */
-    margin-top: 5px; /* Espaçamento superior */
-    border: 1px solid #ccc; /* Borda */
-    border-radius: 5px; /* Borda arredondada */
-    box-sizing: border-box; /* Inclui a borda na largura */
+/* Estilos para inputs */
+input[type="text"], input[type="number"], input[type="month"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid var(--color-light-grey);
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-/* Estilos para os botões */
-button {
-    background-color: #1da1f2; /* Cor de fundo */
-    color: #ffffff; /* Cor do texto */
-    border: none; /* Remove a borda */
-    padding: 10px 20px; /* Espaçamento interno */
-    border-radius: 5px; /* Borda arredondada */
-    cursor: pointer; /* Altera o cursor ao passar por cima */
-    margin-top: 10px; /* Espaçamento superior */
-}
-
-/* Estilos para os botões quando passa o mouse */
-button:hover {
-    background-color: #0d8bf2; /* Cor de fundo */
-}
-
-/* Estilos para o resumo */
+/* Estilos para resumo */
 #resumo {
-    background-color: #30444e; /* Cor de fundo escura */
-    color: #ffffff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno */
-    margin-top: 20px; /* Espaçamento superior */
-    border-radius: 5px; /* Borda arredondada */
+  background-color: var(--bg-input);
+  color: var(--color-white);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 
-/* Estilos para os elementos dentro do resumo */
 #resumo p {
-    margin-bottom: 10px; /* Espaçamento inferior */
+  margin-bottom: 10px;
 }
 
 #resumo span {
-    font-weight: bold; /* Texto em negrito */
+  font-weight: bold;
 }
 
-/* Estilos para a lista de gastos */
+/* Estilos para lista de gastos */
 #gastos-mes-selecionado ul {
-    list-style-type: none; /* Remove marcadores da lista */
-    padding: 0; /* Remove espaçamento interno */
+  list-style-type: none;
+  padding: 0;
 }
 
 #gastos-mes-selecionado li {
-    margin-bottom: 10px; /* Espaçamento inferior */
+  margin-bottom: 10px;
 }
 
 .imagem-abaixo-botao {
   display: block;
-  margin: 20px auto 0; /* Espaçamento acima da imagem e centralização horizontal */
-  width: 100px; /* Ajuste a largura conforme necessário */
-  height: auto; /* Mantém a proporção da imagem */
-  border-radius: 5px; /* Bordas arredondadas, opcional */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
+  margin: 20px auto 0;
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para o formulário */
 #form {
   display: flex;
 }
 
-#principal,
-#principal2,
-#secundario,
-#secundario2 {
-  background-color: #192734;
+#principal, #principal2, #secundario, #secundario2 {
+  background-color: var(--bg-sidebar);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: 20px;
   flex: 1;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
-#principal h2,
-#principal2 h2,
-#secundario h2,
-#secundario2 h2 {
+#principal h2, #principal2 h2, #secundario h2, #secundario2 h2 {
   font-size: 1.5em;
   margin-bottom: 20px;
-  color: #ffffff;
 }
 
-#principal label,
-#principal2 label {
+#principal label, #principal2 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-#principal input,
-#principal2 input {
+#principal input, #principal2 input {
   width: calc(100% - 10px);
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #444;
   border-radius: 5px;
   background-color: #3b3b3b;
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 1em;
 }
 
-#principal input[type="month"],
-#principal2 input[type="month"] {
+#principal input[type="month"], #principal2 input[type="month"] {
   width: 100%;
 }
 
-#principal button,
-#principal2 button {
+#principal button, #principal2 button {
   width: 100%;
   padding: 15px;
-  background-color: #1da1f2;
+  background-color: var(--bg-twitter);
   border: none;
   border-radius: 5px;
-  color: #ffffff;
+  color: var(--color-white);
   font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-#principal button:hover,
-#principal2 button:hover {
-  background-color: #0d8bf2;
+#principal button:hover, #principal2 button:hover {
+  background-color: var(--bg-twitter-hover);
 }
 
 #secundario ul {

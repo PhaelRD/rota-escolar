@@ -69,13 +69,39 @@ body {
 }
 
 .excluir-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
   background-color: #e0245e;
   color: #ffffff;
-  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
 }
 
 .excluir-btn:hover {
   background-color: #c02053;
+}
+
+.editar-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+.editar-btn:hover {
+  background-color: #0d8bf2;
 }
 
 .content {
@@ -295,13 +321,17 @@ header h1 {
 }
 
 header button {
-  background-color: #1da1f2;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #c72052;
   color: #ffffff;
   border: none;
-  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
 }
 
 section {

@@ -78,16 +78,16 @@
         </div>
 
         <div class="content">
-            <header>
-                <h1>Gerenciar Alunos</h1>
-                <!-- Adicione o botão de voltar -->
-                <button id="voltar" onclick="navegarPara('usuario.html')">Voltar</button>
-                <br>
-                <button><a onclick="showSections(['formSection', 'listaSection', 'pesquisaSection'])">Adicionar/Editar Aluno</a></button>
-                <button><a onclick="showSections(['formSection2'])">Criar Convite</a></button>
-                <button><a onclick="showSections(['reajuste'])">Reajuste Anual</a></button>
-
-            </header>
+          <header>
+            <h1>Gerenciar Alunos</h1>
+            <!-- Adicione o botão de voltar -->
+            <button id="voltar" onclick="navegarPara('usuario.html')">Voltar</button>
+            <div class="button-container">
+              <button id="select"><a onclick="showSections(['formSection', 'listaSection', 'pesquisaSection'])">Adicionar/Editar Aluno</a></button>
+              <button id="select"><a onclick="showSections(['formSection2'])">Criar Convite</a></button>
+              <button id="select"><a onclick="showSections(['reajuste'])">Reajuste Anual</a></button>
+            </div>
+          </header>
         
             <section id="formSection">
                 <!-- Formulário para adicionar/editar aluno -->

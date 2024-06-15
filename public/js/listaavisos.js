@@ -37,11 +37,11 @@ function verificarAvisosPagamentoUsuarioLogado() {
                                 const mesVencimento = new Date(aluno.dataVencimento).getUTCMonth() + 1;
                                 if (i < mesAtual || (i === mesAtual && diaAtual > diaVencimento)) {
                                     // Pagamento está atrasado
-                                    const listItem = criarItemAviso(aluno, i, anoAtual, true);
+                                    const listItem = criarItemAviso(aluno, i, anoAtual, true, alunoId);
                                     listaAvisosPagamento.appendChild(listItem);
                                 } else {
                                     // Pagamento está pendente
-                                    const listItem = criarItemAviso(aluno, i, anoAtual, false);
+                                    const listItem = criarItemAviso(aluno, i, anoAtual, false, alunoId);
                                     listaAvisosPagamento.appendChild(listItem);
                                 }
                             }
@@ -56,7 +56,7 @@ function verificarAvisosPagamentoUsuarioLogado() {
 }
 
 // Função auxiliar para criar um item de aviso de pagamento
-function criarItemAviso(aluno, mes, ano, atrasado) {
+function criarItemAviso(aluno, mes, ano, atrasado, alunoId) {
     const listItem = document.createElement('div');
     listItem.classList.add('card');
 
@@ -77,10 +77,16 @@ function criarItemAviso(aluno, mes, ano, atrasado) {
     `;
 
     const pagoButton = listItem.querySelector('.pago-btn');
-    pagoButton.onclick = () => registrarPagamentoUsuarioLogado(aluno.id, mes, ano);
+    pagoButton.onclick = () => {
+        console.log("ID do aluno:", alunoId);
+        registrarPagamentoUsuarioLogado(alunoId, mes, ano);
+    };
 
     const cobrarButton = listItem.querySelector('.cobrar-btn');
-    cobrarButton.onclick = () => enviarCobrancaWhatsAppUsuarioLogado(aluno.id, aluno.valor);
+    cobrarButton.onclick = () => {
+        console.log("ID do aluno:", alunoId);
+        enviarCobrancaWhatsAppUsuarioLogado(alunoId, aluno.valor);
+    };
 
     // Adicionar o card à lista e ativar a animação
     document.getElementById('listaAvisosPagamento').appendChild(listItem);
@@ -89,13 +95,10 @@ function criarItemAviso(aluno, mes, ano, atrasado) {
     return listItem;
 }
 
-
-
-
 // Função para obter o mês de início da cobrança com base na data de vencimento
 function obterMesInicioCobranca(dataVencimento) {
     const data = new Date(dataVencimento);
-    return data.getUTCMonth() + 1; // Os meses em JavaScript são baseados em zero
+    return data.getMonth() + 1; // Os meses em JavaScript são baseados em zero
 }
 
 // Função para registrar pagamento
@@ -120,7 +123,6 @@ function registrarPagamentoUsuarioLogado(alunoId, mes, ano) {
     });
 }
 
-
 // Função para enviar cobrança via WhatsApp para o usuário logado
 function enviarCobrancaWhatsAppUsuarioLogado(alunoId, valorMensalidade) {
     // Verificar se há um usuário autenticado
@@ -132,8 +134,10 @@ function enviarCobrancaWhatsAppUsuarioLogado(alunoId, valorMensalidade) {
             // Obter o número de telefone e nome do responsável do aluno do usuário logado
             firebase.database().ref('users/' + userId + '/alunos/' + alunoId + '/responsavel').once('value', (responsavelSnapshot) => {
                 const responsavel = responsavelSnapshot.val();
+                console.log("Dados do responsável:", responsavel);
                 if (responsavel && responsavel.telefoneUm) {
                     const telefoneResponsavel = responsavel.telefoneUm;
+                    console.log("Número de telefone do responsável:", telefoneResponsavel);
 
                     // Obter o nome do aluno do usuário logado
                     firebase.database().ref('users/' + userId + '/alunos/' + alunoId + '/nomeCompleto').once('value', (alunoNomeSnapshot) => {
@@ -170,37 +174,6 @@ function enviarCobrancaWhatsAppUsuarioLogado(alunoId, valorMensalidade) {
         }
     });
 }
-
-
-
-// Função para obter o mês de início da cobrança com base na data de vencimento
-function obterMesInicioCobranca(dataVencimento) {
-    const data = new Date(dataVencimento);
-    return data.getMonth() + 1; // Os meses em JavaScript são baseados em zero
-}
-
-// Função para registrar pagamento
-function registrarPagamentoUsuarioLogado(alunoId, mes, ano) {
-    // Verificar se há um usuário autenticado
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            // Usuário está autenticado, obter sua ID
-            const userId = user.uid;
-
-            // Adicionar pagamento ao Firebase do usuário logado
-            const chavePagamento = `${mes}-${ano}`;
-            firebase.database().ref('users/' + userId + '/pagamentos/' + alunoId + '/' + chavePagamento).set({
-                pago: true
-            });
-
-            // Atualizar a lista de avisos
-            verificarAvisosPagamentoUsuarioLogado();
-        } else {
-            console.error("Nenhum usuário autenticado encontrado");
-        }
-    });
-}
-
 
 // Chamar a função para verificar e exibir avisos de pagamento ao carregar a página
 verificarAvisosPagamentoUsuarioLogado();

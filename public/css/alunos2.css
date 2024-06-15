@@ -68,23 +68,90 @@ body {
   }
 
   #voltar{
-    background-color: #e0245e; /* Cor do Twitter */
-  }
-  
-  .button:hover {
-    background-color: #0d8bf2; /* Cor de destaque ao passar o mouse */
-  }
-
-  
-  .excluir-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
     background-color: #e0245e; /* Cor do Twitter */
     color: #ffffff;
-    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center; 
+   }
+  
+  .button:hover {
+    background-color: #c02053; /* Cor de destaque ao passar o mouse */
   }
 
-  .excluir-btn:hover{
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  header .button-container {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  header button {
+    flex: 1;
+    padding: 10px;
+    background-color: #1da1f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  header button a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .excluir-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #e0245e;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .excluir-btn:hover {
     background-color: #c02053;
   }
+  
+  .editar-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #1da1f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .editar-btn:hover {
+    background-color: #0d8bf2;
+  }
+
   
   /* Estilos para o conteúdo ao lado da barra lateral */
   .content {
@@ -338,14 +405,21 @@ header h1 {
 
 /* Estilos para o botão de voltar */
 header button {
-  background-color: #1da1f2; /* Cor de fundo */
-  color: #ffffff; /* Cor do texto */
-  border: none; /* Remove a borda */
-  padding: 8px 16px; /* Espaçamento interno */
-  border-radius: 5px; /* Borda arredondada */
-  cursor: pointer; /* Altera o cursor ao passar por cima */
-  margin-top: 10px; /* Espaçamento superior */
+  display: inline-block;
+  width: auto;
+  padding: 10px;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 10px; /* Adicione um espaço entre os botões */
 }
+
+
 
 /* Estilos para as seções */
 section {

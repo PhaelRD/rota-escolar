@@ -10,10 +10,69 @@ body {
 }
 
 .sidebar {
-  width: 250px;
-  background-color: #192734;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100vh;
+  background-color: #333;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: 3;
+}
+
+.sidebar.expandido {
+  width: 250px;
+  z-index: 2;
+}
+
+#toggleButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  padding: 8px 12px;
+  background-color: #1da1f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.sidebar.expandido #toggleButton {
+  display: block;
+}
+
+#toggleButton:hover {
+  background-color: #0d8bf2;
+}
+
+.perfil-imagem {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.sidebar .dados,
+.sidebar .botoes,
+.sidebar .logo {
+  display: none;
+}
+
+.sidebar.expandido .dados,
+.sidebar.expandido .botoes,
+.sidebar.expandido .logo {
+  display: block;
+}
+
+.swal2-container {
+  z-index: 4;
 }
 
 .titulo {
@@ -27,12 +86,6 @@ body {
   margin-bottom: 30px;
 }
 
-.perfil-imagem {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
 .dados {
   margin-top: 20px;
 }
@@ -42,16 +95,15 @@ body {
   margin-bottom: 10px;
 }
 
-.nome{
+.nome {
   margin-top: 70px;
 }
 
 .info {
   font-size: 16px;
-  color: #ffffff;
 }
 
-.button {
+.button, .nav-button, .modal-content button, #localBotaoUpgrade button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -65,37 +117,72 @@ body {
   text-align: center;
 }
 
-.button:hover {
+.button:hover, .nav-button:hover, .modal-content button:hover, #localBotaoUpgrade button:hover {
   background-color: #0d8bf2;
+}
+
+.nav-button {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.button-logout {
+  background-color: #e0245e;
+}
+
+.button-logout:hover {
+  background-color: #c72052;
 }
 
 .content {
   flex: 1;
 }
 
-.nav-button {
-  display: block;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #1da1f2;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: left;
-}
-
-.nav-button:hover {
-  background-color: #0d8bf2;
+.content h2, #avisosPagamento {
+  text-align: center;
 }
 
 #info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
   margin-bottom: 30px;
 }
 
-#avisosPagamento {
-  margin-top: 30px;
+#info > div {
+  flex: 0 0 calc(33.33% - 20px);
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #30444e;
+  transition: all 0.3s ease;
+}
+
+#info > div:hover {
+  transform: scale(1.05);
+}
+
+#navbuttons {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-button {
+  margin: 0 10px;
+}
+
+#listaAvisosPagamento {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#listaAvisosPagamento li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
 .modal {
@@ -123,6 +210,16 @@ body {
   transform: translateY(-50%);
 }
 
+.modal-content input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #30444e;
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -137,246 +234,6 @@ body {
   cursor: pointer;
 }
 
-.modal-content input[type="text"] {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: #30444e;
-  color: #ffffff;
-}
-
-.modal-content button {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #1da1f2;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.modal-content button:hover {
-  background-color: #0d8bf2;
-}
-
-
-.button-logout {
-  background-color: #e0245e;
-}
-
-.button-logout:hover {
-  background-color: #c72052;
-}
-
-#localBotaoUpgrade {
-  margin-top: 20px;
-}
-
-#localBotaoUpgrade button {
-  display: block;
-  padding: 10px;
-  background-color: #1da1f2;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  text-align: center;
-}
-
-#localBotaoUpgrade button:hover {
-  background-color: #0d8bf2;
-}
-
-#info {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  text-align: center;
-}
-
-#info > div {
-  flex: 0 0 calc(33.33% - 20px); /* Define uma largura flexível para as colunas */
-  margin-bottom: 20px; /* Espaçamento entre as colunas */
-  padding: 10px; /* Espaçamento interno das colunas */
-  background-color: #30444e; /* Cor de fundo para destacar as colunas */
-  transition: all 0.3s ease; /* Transição suave para todas as mudanças */
-}
-
-#info > div:hover {
-  transform: scale(1.05);
-}
-
-.content h2 {
-  text-align: center;
-}
-
-#navbuttons {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-button {
-  margin: 0 10px;
-}
-
-#avisosPagamento {
-  text-align: center;
-}
-
-#listaAvisosPagamento {
-  list-style-type: none;
-  padding: 0;
-}
-
-#listaAvisosPagamento li {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-}
-
-.pago-btn,
-.cobrar-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.pago-btn {
-  background-color: #4CAF50;
-  color: #ffffff;
-}
-
-.cobrar-btn {
-  background-color: #e0245e;
-  color: #ffffff;
-}
-
-.pago-btn {
-  margin-top:10px;
-  margin-right: 10px;
-}
-
-.cobrar-btn {
-  margin-top:10px;
-  margin-left: 10px;
-}
-
-.sidebar {
-  position: relative;
-}
-
-#toggleButton {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: block;
-  padding: 8px 12px;
-  background-color: #1da1f2;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 10px;
-}
-
-#toggleButton:hover {
-  background-color: #0d8bf2;
-}
-
-.sidebar.expandido {
-  width: 250px;
-  z-index:2 ;
-}
-
-.sidebar {
-  width: 50px;
-  height: 50px;
-  background-color: #333;
-  padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: width 0.5s ease, height 0.5s ease;
-    position: relative;
-  }
-  
-.perfil-imagem {
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  
-.sidebar.expandido #toggleButton {
-    display: block;
-  }
-  
-.sidebar #toggleButton {
-    display: none;
-  }
-  
-.sidebar.expandido .dados,
-.sidebar.expandido .botoes,
-.sidebar.expandido .logo {
-    display: block;
-  }
-  
-.sidebar .dados,
-.sidebar .botoes,
-.sidebar .logo {
-    display: none;
-  }
-  
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 100vh;
-    background-color: #333;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: width 0.5s ease;
-    z-index: 3;
-  }
-  
-.perfil-imagem {
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  
-#toggleButton {
-    display: none;
-  }
-  
-.sidebar.expandido {
-    width: 250px;
-  }
-  
-.sidebar.expandido .dados,
-.sidebar.expandido .botoes,
-.sidebar.expandido .logo {
-    display: block;
-  }
-  
-.swal2-container {
-    z-index: 4;
-  }
-
 .card {
   border-radius: 8px;
   padding: 16px;
@@ -388,6 +245,16 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.3s ease;
+}
+
+.card.visible {
+  background-color: #192734;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-header {
@@ -405,20 +272,35 @@ body {
   align-items: center;
 }
 
-#listaAvisosPagamento {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.pago-btn {
+  background-color: #4CAF50;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.card.visible {
-  background-color: #192734;
-  opacity: 1;
-  transform: translateY(0) scale(1);
+.cobrar-btn {
+  background-color: #e0245e;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.imagem-abaixo-botao {
+  display: block;
+  margin: 20px auto 0;
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1200px) {
@@ -427,34 +309,18 @@ body {
   }
 }
 
+@media (max-width: 1024px) {
+  #info > div {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
 @media (max-width: 768px) {
-  .card {
+  .card, #info > div {
     width: calc(100% - 20px);
   }
-
   #listaAvisosPagamento {
     flex-direction: column;
     align-items: center;
   }
-}
-
-@media (max-width: 1024px) {
-  #info > div {
-    flex-basis: calc(50% - 20px); /* Define a largura das colunas para telas médias */
-  }
-}
-
-@media (max-width: 768px) {
-  #info > div {
-    flex-basis: calc(100% - 20px); /* Define a largura das colunas para telas pequenas */
-  }
-}
- 
-.imagem-abaixo-botao {
-  display: block;
-  margin: 20px auto 0; /* Espaçamento acima da imagem e centralização horizontal */
-  width: 100px; /* Ajuste a largura conforme necessário */
-  height: auto; /* Mantém a proporção da imagem */
-  border-radius: 5px; /* Bordas arredondadas, opcional */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave, opcional */
 }
